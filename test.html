@@ -1,108 +1,192 @@
-<!-- Version 3.0 -->
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-<meta charset="UTF-8"/>
-<title>OUTR || MTech CSE</title>
+  <!-- Mobile Specific Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="img/fav.png" />
+  <!-- Author Meta -->
+  <meta name="author" content="colorlib" />
+  <!-- Meta Description -->
+  <meta name="description" content="" />
+  <!-- Meta Keyword -->
+  <meta name="keywords" content="" />
+  <!-- meta character set -->
+  <meta charset="UTF-8" />
+  <!-- Site Title -->
+  <title>OUTR || MTech CSE</title>
 
-<link href="https://fonts.googleapis.com/css?family=Playfair+Display:900|Roboto:400,400i,500,700" rel="stylesheet"/>
-
-<link rel="stylesheet" href="css/linearicons.css"/>
-<link rel="stylesheet" href="css/font-awesome.min.css"/>
-<link rel="stylesheet" href="css/bootstrap.css"/>
-<link rel="stylesheet" href="css/magnific-popup.css"/>
-<link rel="stylesheet" href="css/owl.carousel.css"/>
-<link rel="stylesheet" href="css/nice-select.css"/>
-<link rel="stylesheet" href="css/hexagons.min.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/themify-icons/0.1.2/css/themify-icons.css"/>
-<link rel="stylesheet" href="css/main.css"/>
-
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:900|Roboto:400,400i,500,700" rel="stylesheet" />
+  <!--
+      CSS
+      =============================================
+    -->
+  <link rel="stylesheet" href="css/linearicons.css" />
+  <link rel="stylesheet" href="css/font-awesome.min.css" />
+  <link rel="stylesheet" href="css/bootstrap.css" />
+  <link rel="stylesheet" href="css/magnific-popup.css" />
+  <link rel="stylesheet" href="css/owl.carousel.css" />
+  <link rel="stylesheet" href="css/nice-select.css">
+  <link rel="stylesheet" href="css/hexagons.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/themify-icons/0.1.2/css/themify-icons.css" />
+  <link rel="stylesheet" href="css/main.css" />
 </head>
 
 <body>
 
-<header class="default-header">
-<nav class="navbar navbar-expand-lg navbar-light">
-<div class="container">
 
-<a class="navbar-brand" href="index.html">
-<img src="img/logo.png"/>
-</a>
+  <!-- ================ Start Header Area ================= -->
+  <header class="default-header">
+    <nav class="navbar navbar-expand-lg  navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="img/logo.png" alt="" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="lnr lnr-menu"></span>
+        </button>
 
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-<span class="lnr lnr-menu"></span>
-</button>
+        <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="webpages\family.html">Family</a></li>
+            <!-- Dropdown -->
+            <li class="dropdown">
+              <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                Academics
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="https://outruniversity.github.io/Documents/semester2_syllabus.pdf">Syllabus</a>
+                <a class="dropdown-item" href="https://outruniversity.github.io/Documents/timetable.pdf">Time Table</a>
+                <a class="dropdown-item" href="#">Attendance</a>
 
-<div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
+              </div>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                Study Materials
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="webpages\classnotes.html">Class Notes</a>
+                <a class="dropdown-item" href="webpages\ebooks.html">E-Books</a>
+                <a class="dropdown-item" href="webpages\pyqs.html">PYQS</a>
+              </div>
+            </li>
+            <li><a href="webpages\contacts.html">Contacts</a></li>
 
-<ul class="navbar-nav">
+            <li>
+              <button class="search">
+                <span class="lnr lnr-magnifier" id="search"></span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="search-input" id="search-input-box">
+      <div class="container">
+        <form class="d-flex justify-content-between">
+          <input type="text" class="form-control" id="search-input" placeholder="Search Here" />
+          <button type="submit" class="btn"></button>
+          <span class="lnr lnr-cross" id="close-search" title="Close Search"></span>
+        </form>
+      </div>
+    </div>
+  </header>
+  <!-- ================ End Header Area ================= -->
 
-<li><a href="#">Home</a></li>
-<li><a href="webpages/family.html">Family</a></li>
-
-<li class="dropdown">
-<a class="dropdown-toggle" href="#" data-toggle="dropdown">Academics</a>
-
-<div class="dropdown-menu">
-<a class="dropdown-item" href="https://outruniversity.github.io/Documents/semester2_syllabus.pdf">Syllabus</a>
-<a class="dropdown-item" href="https://outruniversity.github.io/Documents/timetable.pdf">Time Table</a>
-<a class="dropdown-item" href="#">Attendance</a>
-</div>
-
-</li>
-
-<li class="dropdown">
-<a class="dropdown-toggle" href="#" data-toggle="dropdown">Study Materials</a>
-
-<div class="dropdown-menu">
-<a class="dropdown-item" href="webpages/classnotes.html">Class Notes</a>
-<a class="dropdown-item" href="webpages/ebooks.html">E-Books</a>
-<a class="dropdown-item" href="webpages/pyqs.html">PYQS</a>
-</div>
-
-</li>
-
-<li><a href="webpages/contacts.html">Contacts</a></li>
-
-</ul>
-</div>
-</div>
-</nav>
-</header>
-
-
-<section class="home-banner-area">
+  <!-- ================ start banner Area ================= -->
+ <section class="home-banner-area" id="home">
 <div class="container">
 <div class="row justify-content-center fullscreen align-items-center">
-
-<div class="col-lg-6">
-<h1 class="text-white">MTech CSE <br>Student Learning Hub</h1>
-
+<div class="col-lg-6 home-banner-left">
+<h1 class="text-white">MTech CSE &nbsp;&nbsp;<br>Student Learning Hub</h1>
 <p class="text-white mt-20">
-A non-official student community website for sharing class notes, e-books, exam resources, and academic updates.
+A non-official student community website for sharing class notes, e-books, exam resources, and important academic updates.
 </p>
 </div>
-
-<div class="col-lg-6">
-<img class="img-fluid" src="img/header-img.png">
+<div class="col-lg-6 home-banner-right">
+<img class="img-fluid" src="img/header-img.png" alt="">
 </div>
-
 </div>
 </div>
 </section>
+  <!-- ================ End banner Area ================= -->
+
+  <!-- ================ Start Feature Area ================= -->
+
+    <section class="feature-area">
+    <div class="container-fluid">
+      <div class="feature-inner row">
+        <div class="col-lg-2 col-md-6">
+          <div class="feature-item d-flex">
+            <i class="ti-book"></i>
+            <div class="ml-20">
+              <h4>Study Material</h4>
+              <p>
+                <a href="https://drive.google.com/drive/folders/10DeycNCIMRC2zuUnjWU9eHQxEQi7_dqL?usp=sharing">Download</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+                        <div class="col-lg-2 col-md-6">
+          <div class="feature-item d-flex">
+
+            <i class="ti-desktop"></i>
+            <div class="ml-20">
+              <h4>E-Classroom</h4>
+              <p>
+                <a href="webpages\eclass.html">Join</a>
+              </p> 
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-lg-2 col-md-6">
+          <div class="feature-item d-flex border-right-0">
+            <i class="ti-cup"></i>
+            <div class="ml-20">
+              <h4>Rankers</h4>
+              <p>
+                <a href="webpages\rankers.html">View</a>
+              </p>
+            </div>
+          </div>
+        </div>
 
 
 
-<!-- STUDENT DASHBOARD -->
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================ End Feature Area ================= -->
+
+  
+
+
+
+
+<!-- ================ Student Dashboard ================= -->
 
 <div class="row justify-content-center">
-<div class="col-lg-10">
+  <div class="col-lg-10">
 
-<div class="dashboard-tile">
+    <div class="dashboard-tile">
 
-<h3 style="text-align:center;margin-bottom:25px;">
+      <!-- DASHBOARD TITLE -->
+      <h3 style="
+        font-size:20px;
+        font-weight:600;
+        margin-bottom:25px;
+        color:#222;
+        text-align:center;
+      ">
 <u>STUDENT DASHBOARD</u>
 </h3>
 
