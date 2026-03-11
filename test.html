@@ -347,6 +347,8 @@ semesterDropdown.addEventListener("change", function(){
 const selectedSemester = this.value;
 
 subjectDropdown.innerHTML = '<option value="">Select Subject</option>';
+subjectDropdown.selectedIndex = 0;
+
 
 if(subjects[selectedSemester]){
 
@@ -372,10 +374,16 @@ searchBtn.addEventListener("click", function(){
 
 const selectedPage = subjectDropdown.value;
 
+if(!semesterDropdown.value){
+alert("Please select semester");
+return;
+}
+
 if(!selectedPage){
 alert("Please select subject");
 return;
 }
+
 
 resultFrame.innerHTML = `
 <iframe src="${selectedPage}"
