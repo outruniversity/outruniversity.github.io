@@ -187,12 +187,21 @@ A non-official student community website for sharing class notes, e-books, exam 
       <div class="dashboard-controls">
 
         <!-- NON-FUNCTIONAL DROPDOWN -->
-        <select class="form-control control-item">
-          <option value="">Semester 1</option>
-          <a href="academics/indexes/sem2.html"><option>Semester 2</option></a>
-          <a href="academics/indexes/sem3.html"><option>Semester 3</option></a>
-          <a href="academics/indexes/sem4.html"><option>Semester 4</option></a>
-        </select>
+<select class="form-control control-item" onchange="openSemester(this)">
+  <option value="">Semester 1</option>
+  <option value="academics/indexes/sem2.html">Semester 2</option>
+  <option value="academics/indexes/sem3.html">Semester 3</option>
+  <option value="academics/indexes/sem4.html">Semester 4</option>
+</select>
+
+<script>
+function openSemester(select){
+  if(select.value){
+    window.location.href = select.value;
+  }
+}
+</script>
+
 
         <!-- FUNCTIONAL DROPDOWN -->
         <select id="singleDropdown" class="form-control control-item">
