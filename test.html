@@ -193,25 +193,20 @@ A non-official student community website for sharing class notes, e-books, exam 
       <!-- DROPDOWNS + SEARCH -->
       <div class="dashboard-controls">
 
-        <!-- NON-FUNCTIONAL DROPDOWN -->
-        <select class="form-control control-item">
-          <option value="">Select Semester</option>
-          <option>Semester 2</option>
-        </select>
+<!-- SEMESTER DROPDOWN -->
+<select id="semesterDropdown" class="form-control control-item">
+  <option value="">Select Semester</option>
+  <option value="sem1">Semester 1</option>
+  <option value="sem2">Semester 2</option>
+  <option value="sem3">Semester 3</option>
+  <option value="sem4">Semester 4</option>
+</select>
 
-        <!-- FUNCTIONAL DROPDOWN -->
-        <select id="singleDropdown" class="form-control control-item">
-          <option value="">Select Subject</option>
+<!-- SUBJECT DROPDOWN -->
+<select id="subjectDropdown" class="form-control control-item">
+  <option value="">Select Subject</option>
+</select>
 
-                    <option value="academics/semester2/cc.html"> Cloud Computing </option>
-                    <option value="academics/semester2/cl2.html"> Computing Lab - II </option>
-                    <option value="academics/semester2/dm.html"> Disaster Management </option>
-                    <option value="academics/semester2/hpc.html"> High Performance Computing </option>
-                    <option value="academics/semester2/iot.html"> Internet Of Things </option>
-                    <option value="academics/semester2/mla.html"> Machine Learning Application </option>
-                    <option value="academics/semester2/ooad.html"> Object Oriented Analysis and Design </option>
-
-        </select>
 
         <!-- SEARCH BUTTON -->
         <button id="searchBtn" class="btn btn-primary control-item">
@@ -285,37 +280,115 @@ button.control-item {
 </style>
 
 <script>
+
 document.addEventListener("DOMContentLoaded", function() {
 
-  const dropdown = document.getElementById("singleDropdown");
-  const searchBtn = document.getElementById("searchBtn");
-  const resultFrame = document.getElementById("resultFrame");
+const semesterDropdown = document.getElementById("semesterDropdown");
+const subjectDropdown = document.getElementById("subjectDropdown");
+const searchBtn = document.getElementById("searchBtn");
+const resultFrame = document.getElementById("resultFrame");
 
-  /* DEFAULT LOAD */
-  resultFrame.innerHTML = `
-    <iframe src="https://outruniversity.github.io/webpages/recentpages.html" 
-            style="width:100%;height:500px;border:none;">
-    </iframe>
-  `;
+/* SUBJECT DATA */
 
-  /* SEARCH BUTTON CLICK */
-  searchBtn.addEventListener("click", function() {
-    const selectedPage = dropdown.value;
+const subjects = {
 
-    if (!selectedPage) {
-      alert("Please select a subject");
-      return;
-    }
+sem1: [
+{ name: "Subject 1", link: "academics/semester1/sub1.html" },
+{ name: "Subject 2", link: "academics/semester1/sub2.html" },
+{ name: "Subject 3", link: "academics/semester1/sub3.html" },
+{ name: "Subject 4", link: "academics/semester1/sub4.html" },
+{ name: "Subject 5", link: "academics/semester1/sub5.html" },
+{ name: "Subject 6", link: "academics/semester1/sub6.html" }
+],
 
-    resultFrame.innerHTML = `
-      <iframe src="${selectedPage}" 
-              style="width:100%;height:500px;border:none;">
-      </iframe>
-    `;
-  });
+sem2: [
+{ name: "Cloud Computing", link: "academics/semester2/cc.html" },
+{ name: "Computing Lab - II", link: "academics/semester2/cl2.html" },
+{ name: "Disaster Management", link: "academics/semester2/dm.html" },
+{ name: "High Performance Computing", link: "academics/semester2/hpc.html" },
+{ name: "Internet Of Things", link: "academics/semester2/iot.html" },
+{ name: "Machine Learning Application", link: "academics/semester2/mla.html" }
+],
+
+sem3: [
+{ name: "Subject 1", link: "academics/semester3/sub1.html" },
+{ name: "Subject 2", link: "academics/semester3/sub2.html" },
+{ name: "Subject 3", link: "academics/semester3/sub3.html" },
+{ name: "Subject 4", link: "academics/semester3/sub4.html" },
+{ name: "Subject 5", link: "academics/semester3/sub5.html" },
+{ name: "Subject 6", link: "academics/semester3/sub6.html" }
+],
+
+sem4: [
+{ name: "Subject 1", link: "academics/semester4/sub1.html" },
+{ name: "Subject 2", link: "academics/semester4/sub2.html" },
+{ name: "Subject 3", link: "academics/semester4/sub3.html" },
+{ name: "Subject 4", link: "academics/semester4/sub4.html" },
+{ name: "Subject 5", link: "academics/semester4/sub5.html" },
+{ name: "Subject 6", link: "academics/semester4/sub6.html" }
+]
+
+};
+
+
+/* DEFAULT LOAD */
+
+resultFrame.innerHTML = `
+<iframe src="https://outruniversity.github.io/webpages/recentpages.html"
+style="width:100%;height:500px;border:none;">
+</iframe>
+`;
+
+
+/* WHEN SEMESTER CHANGES */
+
+semesterDropdown.addEventListener("change", function(){
+
+const selectedSemester = this.value;
+
+subjectDropdown.innerHTML = '<option value="">Select Subject</option>';
+
+if(subjects[selectedSemester]){
+
+subjects[selectedSemester].forEach(function(sub){
+
+const option = document.createElement("option");
+
+option.text = sub.name;
+option.value = sub.link;
+
+subjectDropdown.appendChild(option);
 
 });
+
+}
+
+});
+
+
+/* SEARCH BUTTON */
+
+searchBtn.addEventListener("click", function(){
+
+const selectedPage = subjectDropdown.value;
+
+if(!selectedPage){
+alert("Please select subject");
+return;
+}
+
+resultFrame.innerHTML = `
+<iframe src="${selectedPage}"
+style="width:100%;height:500px;border:none;">
+</iframe>
+`;
+
+});
+
+});
+
 </script>
+
 
 
 <!-- ================ Student Dashboard Ends Here ================= -->
