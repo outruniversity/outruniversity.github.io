@@ -1,395 +1,195 @@
+
 <!DOCTYPE html>
-<html lang="zxx" class="no-js">
-
+<html lang="en">
 <head>
-  <!-- Mobile Specific Meta -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="img/fav.png" />
-  <!-- Author Meta -->
-  <meta name="author" content="colorlib" />
-  <!-- Meta Description -->
-  <meta name="description" content="" />
-  <!-- Meta Keyword -->
-  <meta name="keywords" content="" />
-  <!-- meta character set -->
-  <meta charset="UTF-8" />
-  <!-- Site Title -->
-  <title>OUTR || MTech CSE</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haven - Will you marry me?</title>
+    <link rel="icon" type="image/x-icon" href="assets/logofav.ico">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: sans-serif;
+            background: rgb(36,6,0);
+            background: linear-gradient(90deg, rgba(36,6,0,1) 0%, rgba(128,8,29,1) 23%, rgba(139,65,180,1) 66%, rgba(121,0,255,1) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            flex-direction: column;
+        }
 
-  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:900|Roboto:400,400i,500,700" rel="stylesheet" />
-  <!--
-      CSS
-      =============================================
-    -->
-  <link rel="stylesheet" href="css/linearicons.css" />
-  <link rel="stylesheet" href="css/font-awesome.min.css" />
-  <link rel="stylesheet" href="css/bootstrap.css" />
-  <link rel="stylesheet" href="css/magnific-popup.css" />
-  <link rel="stylesheet" href="css/owl.carousel.css" />
-  <link rel="stylesheet" href="css/nice-select.css">
-  <link rel="stylesheet" href="css/hexagons.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/themify-icons/0.1.2/css/themify-icons.css" />
-  <link rel="stylesheet" href="css/main.css" />
+        .container {
+            text-align: center;
+            z-index: 10;
+            padding: 20px;
+        }
+
+        .message {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 150px;
+        }
+
+        .modal-content {
+            text-align: center;
+        }
+
+        .modal-header {
+            border-bottom: none;
+        }
+
+        .modal-body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                overflow: hidden;
+            }
+            .message {
+                font-size: 1.5em;
+            }
+            .button {
+                padding: 8px 16px;
+                font-size: 1em;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-
-  <!-- ================ Start Header Area ================= -->
-  <header class="default-header">
-    <nav class="navbar navbar-expand-lg  navbar-light">
-      <div class="container">
-        <a class="navbar-brand" href="https://outruniversity.github.io/index.html">
-          <img src="https://outruniversity.github.io/img/logo.png" alt="" />
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="lnr lnr-menu"></span>
-        </button>
-
-        <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
-          <ul class="navbar-nav">
-            <li><a href="#">Home</a></li>
-            <!-- Dropdown -->
-            <li class="dropdown">
-              <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                Switch Semester
-              </a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="https://outruniversity.github.io/academics/indexes/sem1.html">Semester 1</a>
-                <a class="dropdown-item" href="https://outruniversity.github.io/academics/indexes/sem2.html">Semester 2</a>
-                <a class="dropdown-item" href="https://outruniversity.github.io/academics/indexes/sem3.html">Semester 3</a>
-                <a class="dropdown-item" href="https://outruniversity.github.io/academics/indexes/sem4.html">Semester 4</a>
-
-              </div>
-            </li>
-            <li class="dropdown">
-              <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                Study Materials
-              </a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="https://outruniversity.github.io/Documents/semester2_syllabus.pdf">Syllabus</a>
-                <a class="dropdown-item" href="https://outruniversity.github.io/Documents/timetable.pdf">Time Table</a>
-                <a class="dropdown-item" href="https://outruniversity.github.io/webpages\classnotes.html">Class Notes</a>
-                <a class="dropdown-item" href="https://outruniversity.github.io/webpages\ebooks.html">E-Books</a>
-                <a class="dropdown-item" href="https://outruniversity.github.io/webpages\pyqs.html">PYQS</a>
-              </div>
-            </li>
-            <li><a href="webpages\contacts.html">Contacts</a></li>
-
-            <li>
-              <button class="search">
-                <span class="lnr lnr-magnifier" id="search"></span>
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <div class="search-input" id="search-input-box">
-      <div class="container">
-        <form class="d-flex justify-content-between">
-          <input type="text" class="form-control" id="search-input" placeholder="Search Here" />
-          <button type="submit" class="btn"></button>
-          <span class="lnr lnr-cross" id="close-search" title="Close Search"></span>
-        </form>
-      </div>
-    </div>
-  </header>
-  <!-- ================ End Header Area ================= -->
-
-
-  <!-- ================ start banner Area ================= -->
- <section class="home-banner-area" id="home">
 <div class="container">
-<div class="row justify-content-center fullscreen align-items-center">
-<div class="col-lg-6 home-banner-left">
-<h1 class="text-white">MTech CSE &nbsp;&nbsp;<br>Student Learning Hub</h1>
-<p class="text-white mt-20">
-A non-official student community website for sharing class notes, e-books, exam resources, and important academic updates.
-</p>
-</div>
-<div class="col-lg-6 home-banner-right">
-<img class="img-fluid" src="img/header-img.png" alt="">
-</div>
-</div>
-</div>
-</section>
-  <!-- ================ End banner Area ================= -->
-
-  <!-- ================ Start Feature Area ================= -->
-
-    <section class="feature-area">
-    <div class="container-fluid">
-      <div class="feature-inner row">
-        <div class="col-lg-2 col-md-6">
-          <div class="feature-item d-flex">
-            <i class="ti-book"></i>
-            <div class="ml-20">
-              <h4>Study Material</h4>
-              <p>
-                <a href="https://drive.google.com/drive/folders/10DeycNCIMRC2zuUnjWU9eHQxEQi7_dqL?usp=sharing">Download</a>
-              </p>
-            </div>
-          </div>
-        </div>
-
-                        <div class="col-lg-2 col-md-6">
-          <div class="feature-item d-flex">
-
-            <i class="ti-desktop"></i>
-            <div class="ml-20">
-              <h4>E-Classroom</h4>
-              <p>
-                <a href="webpages\eclass.html">Join</a>
-              </p> 
-            </div>
-          </div>
-        </div>
-
-
-        <div class="col-lg-2 col-md-6">
-          <div class="feature-item d-flex border-right-0">
-            <i class="ti-cup"></i>
-            <div class="ml-20">
-              <h4>Rankers</h4>
-              <p>
-                <a href="webpages\rankers.html">View</a>
-              </p>
-            </div>
-          </div>
-        </div>
-
-
-
-      </div>
+    <h1 class="text-white" id="marryText">Will you marry me?</h1>
+    <img src="assets/lovewall.jpg" alt="Love Wall" class="img-fluid" id="loveImage"><br>
+    <div class="message">Coded By Haven ❤️ </div>
+    <div class="button-container">
+        <button class="btn btn-success button yes">Yes</button>
+        <button class="btn btn-danger button no">No</button>
     </div>
-  </section>
+    <audio id="loveSong" src="assets/tjpalagi.mp3" preload="auto"></audio>
+</div>
 
+<div class="modal fade" id="noInspectModal" tabindex="-1" role="dialog" aria-labelledby="noInspectModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h5>No Page Sourcing & Inspect!</h5>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-  <!-- ================ End Feature Area ================= -->
+<footer>
+    Created by <a href="https://www.facebook.com/xvennnnnn" target="_blank" style="color: white; text-decoration: underline;">Haven Charles Papasin</a>
+</footer>
 
-  
-
-
-
-
-<!-- ================ Student Dashboard ================= -->
-
-<div class="row justify-content-center">
-  <div class="col-lg-10">
-
-    <div class="dashboard-tile">
-
-      <!-- DASHBOARD TITLE -->
-      <h3 style="
-        font-size:20px;
-        font-weight:600;
-        margin-bottom:25px;
-        color:#222;
-        text-align:center;
-      ">
-        <u>STUDENT DASHBOARD</u>
-      </h3>
-
-      <!-- DROPDOWNS + SEARCH -->
-      <div class="dashboard-controls">
-
-        <!-- NON-FUNCTIONAL DROPDOWN -->
-<select class="form-control control-item" onchange="openSemester(this)">
-  <option value="">Semester 2</option>
-  <option value="academics/indexes/sem1.html">Semester 1</option>
-  <option value="academics/indexes/sem3.html">Semester 3</option>
-  <option value="academics/indexes/sem4.html">Semester 4</option>
-</select>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
-function openSemester(select){
-  if(select.value){
-    window.location.href = select.value;
-  }
-}
-</script>
+const yesButton = document.querySelector('.yes');
+const noButton = document.querySelector('.no');
+const message = document.querySelector('.message');
+const loveImage = document.getElementById('loveImage');
+const loveSong = document.getElementById('loveSong');
+const marryText = document.getElementById('marryText');
 
+const noMessages = [
+    'Sure na gud ka love?',
+    'But why not?',
+    'You must be joking!',
+    'Are you serious?',
+    'Think again!',
+    'Come on, say yes!',
+    'Don\'t be shy!',
+    'You know you want to!',
+    'It\'s a great idea!',
+    'Please consider it!'
+];
 
-        <!-- FUNCTIONAL DROPDOWN -->
-        <select id="singleDropdown" class="form-control control-item">
-          <option value="">Select Subject</option>
+let noClickCount = 0;
 
-                    <option value="https://outruniversity.github.io/academics/semester2/cc.html"> Cloud Computing </option>
-                    <option value="https://outruniversity.github.io/academics/semester2/cl2.html"> Computing Lab - II </option>
-                    <option value="https://outruniversity.github.io/academics/semester2/dm.html"> Disaster Management </option>
-                    <option value="https://outruniversity.github.io/academics/semester2/hpc.html"> High Performance Computing </option>
-                    <option value="https://outruniversity.github.io/academics/semester2/iot.html"> Internet Of Things </option>
-                    <option value="https://outruniversity.github.io/academics/semester2/mla.html"> Machine Learning Application </option>
-                    <option value="https://outruniversity.github.io/academics/semester2/ooad.html"> Object Oriented Analysis and Design </option>
+yesButton.addEventListener('click', () => {
+    marryText.style.display = 'none';
+    yesButton.style.display = 'none'; 
+    noButton.style.display = 'none';
+    message.textContent = 'Yay! I love you!';
+    loveImage.src = 'assets/yes.gif';
+    loveSong.play();
+});
 
-        </select>
-
-        <!-- SEARCH BUTTON -->
-        <button id="searchBtn" class="btn btn-primary control-item">
-          <i class="fa fa-search"></i> Search
-        </button>
-
-      </div>
-
-      <!-- RESULT FRAGMENT -->
-      <div id="resultFrame" class="result-frame">
-        <p style="color:#666;font-size:14px;">
-          Select an option and click search to load content here.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-</div>
-
-<style>
-.dashboard-tile {
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-  margin: 50px 0 30px;
-}
-
-/* Controls container */
-.dashboard-controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 25px;
-  margin-bottom: 25px;
-}
-
-/* Common control styling */
-.control-item {
-  height: 45px;
-  font-size: 14px;
-  min-width: 250px;
-}
-
-/* Search button tweak */
-button.control-item {
-  min-width: auto;
-  padding: 10px 30px;
-}
-
-/* Result frame */
-.result-frame {
-  min-height: 500px;
-  background: #f9f9f9;
-  border-radius: 10px;
-  padding: 20px;
-}
-
-/* MOBILE VIEW */
-@media (max-width: 767px) {
-  .dashboard-controls {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .control-item {
-    width: 100%;
-  }
-}
-</style>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-
-  const dropdown = document.getElementById("singleDropdown");
-  const searchBtn = document.getElementById("searchBtn");
-  const resultFrame = document.getElementById("resultFrame");
-
-  /* DEFAULT LOAD */
-  resultFrame.innerHTML = `
-    <iframe src="https://outruniversity.github.io/webpages/recentpages.html" 
-            style="width:100%;height:500px;border:none;">
-    </iframe>
-  `;
-
-  /* SEARCH BUTTON CLICK */
-  searchBtn.addEventListener("click", function() {
-    const selectedPage = dropdown.value;
-
-    if (!selectedPage) {
-      alert("Please select a subject");
-      return;
+noButton.addEventListener('click', () => {
+    if (loveSong.paused === false) {
+        loveSong.pause();
     }
 
-    resultFrame.innerHTML = `
-      <iframe src="${selectedPage}" 
-              style="width:100%;height:500px;border:none;">
-      </iframe>
-    `;
-  });
+    if (noClickCount < 10) {
+        message.textContent = noMessages[noClickCount];
+        noClickCount++;
+        loveImage.src = `assets/sad${Math.min(noClickCount, 10)}.gif`;
+        moveButton();
+    }
 
+    if (noClickCount === 10) {
+        noButton.style.display = 'none';
+        message.textContent = 'You only choice is YES! HAHA.';
+    }
+});
+
+const moveButton = () => {
+    const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+    noButton.style.position = 'absolute';
+    noButton.style.left = `${x}px`;
+    noButton.style.top = `${y}px`;
+};
+
+document.addEventListener('contextmenu', event => {
+    event.preventDefault();
+    $('#noInspectModal').modal('show');
+});
+
+document.addEventListener('keydown', event => {
+    if (event.key === 'F12') {
+        event.preventDefault();
+        $('#noInspectModal').modal('show');
+    }
 });
 </script>
 
-
-<!-- ================ Student Dashboard Ends Here ================= -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- ================ start footer Area ================= -->
-<footer class="footer-area" style="background:#222; color:#fff; padding:20px 0;">
-  <div class="container">
-    <div class="row align-items-center justify-content-between">
-
-      <!-- Copyright -->
-      <div class="col-md-6 text-center text-md-left">
-        <p style="color:#ccc; margin:0;">
-          &copy; <script>document.write(new Date().getFullYear());</script>
-          All rights reserved | Designed by ALEKH
-        </p>
-      </div><div></div>
-
-      <!-- Feedback (Replaces Social Media Handles) -->
-      <div class="col-md-6 text-center text-md-right">
-        <span style="color:#ccc; font-size:14px; margin-right:12px;">
-          Share your feedback, <a href="https://forms.gle/L8pTPJ3zobzV4NnU9"
-           target="_blank" rel="noopener noreferrer"
-           style="text-decoration:none;"> Click here </a>
-
-        </span>
-      </div>
-
-    </div>
-  </div>
-</footer>
-<!-- ================ End footer Area ================= -->
-
-
-  <script src="js/vendor/jquery-2.2.4.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-    crossorigin="anonymous"></script>
-  <script src="js/vendor/bootstrap.min.js"></script>
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-  <script src="js/jquery.ajaxchimp.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/parallax.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.sticky.js"></script>
-  <script src="js/hexagons.min.js"></script>
-  <script src="js/jquery.counterup.min.js"></script>
-  <script src="js/waypoints.min.js"></script>
-  <script src="js/jquery.nice-select.min.js"></script>
-  <script src="js/main.js"></script>
 </body>
-
 </html>
