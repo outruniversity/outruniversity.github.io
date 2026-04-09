@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Study Material | OUTR MTech CSE</title>
+    
+    <link rel="stylesheet" href="../style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Specific overrides for the Study Material functionality */
+        .study-tile {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            margin-top: 15px;
+        }
+
+        .study-tile h3 { 
+            text-align: center; 
+            margin-bottom: 15px; 
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .controls-row { display: flex; gap: 15px; margin-bottom: 25px; }
+        
+        .select-input {
+            flex: 1; height: 50px; border-radius: 12px;
+            border: 1.5px solid var(--border); padding: 0 15px;
+            background: var(--bg-light); outline: none; font-size: 14px;
+            cursor: pointer;
+        }
+
+        .search-btn {
+            height: 50px; padding: 0 30px;
+            background: var(--primary); color: white;
+            border: none; border-radius: 12px;
+            font-weight: 600; cursor: pointer; transition: 0.3s;
+        }
+
+        .material-view {
+            width: 100%; min-height: 450px;
+            background: #fafafa; border-radius: 15px;
+            border: 1px dashed #ccc; display: flex;
+            align-items: center; justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Utility Menu Styling */
+        .utility-menu {
+            position: absolute; bottom: 75px; left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            width: 180px; background: white; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 1px solid var(--border);
+            padding: 10px 0; z-index: 2000; visibility: hidden; opacity: 0;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        .utility-menu.show { visibility: visible; opacity: 1; transform: translateX(-50%) translateY(0); }
+        .utility-menu a { display: flex; align-items: center; gap: 12px; padding: 10px 15px; text-decoration: none; color: var(--text-dark); font-size: 13px; }
+        .utility-menu a i { color: var(--primary); width: 18px; }
+
+        .spinner {
+            width: 40px; height: 40px;
+            border: 4px solid #f3f3f3; border-top: 4px solid var(--primary);
+            border-radius: 50%; animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        @media (max-width: 768px) {
+            .controls-row { flex-direction: column; }
+            .search-btn { width: 100%; }
+            .welcome-text { display: none !important; }
+            header { justify-content: flex-end; }
+            .mobile-branding { display: block; margin-right: auto; }
+            .main-content { padding-bottom: 80px !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <nav class="sidebar">
+            <div class="logo-area"> 
+                <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+                <span>OUTR MTech</span>
+            </div>
+    <ul class="nav-links">
+    <a href="..//index.html" style="color: inherit; text-decoration: none;">
+        <li><i class="fas fa-th-large"></i> Dashboard</li></a>
+    
+    <a href="..//studymaterial.html" style="color: inherit; text-decoration: none;">
+        <li><i class="fas fa-folder-open"></i> Study Material</li>
+    </a>
+    <a href="..//ebooks.html" style="color: inherit; text-decoration: none;">
+    <li><i class="fas fa-book"></i> Ebooks</li></a>
+
+    <a href="..//pyqs.html" style="color: inherit; text-decoration: none;">
+    <li><i class="fas fa-file-alt"></i> PYQs</li></a>
+    <a href="..//syllabus.html" style="color: inherit; text-decoration: none;">
+    <li><i class="fas fa-scroll"></i> Syllabus</li></a>
+     <a href="../s/timetable.html" style="color: inherit; text-decoration: none;">
+    <li><i class="fas fa-clock"></i> Timetable</li></a>
+    <a href="https://outr-erp.cet.edu.in/login" style="color: inherit; text-decoration: none;">
+    <li><i class="fas fa-calendar-check"></i> Attendance</li></a>
+    <a href="..//rankers.html" style="color: inherit; text-decoration: none;">
+    <li><i class="fas fa-trophy"></i> Rankers</li></a>
+    <a href="..//contacts.html" style="color: inherit; text-decoration: none;">
+    <li><i class="fas fa-code"></i> About Us</li></a>
+</ul>
+            <div class="sidebar-footer">Designed and Developed by #ALEKH</div>
+        </nav>
+
+        <main class="main-content">
+            <header>
+                <h2 class="welcome-text">Welcome Back</h2>
+                <div class="mobile-branding">OUTR MTech</div>
+                <div class="header-right">
+                    <i class="fas fa-bell bell-icon"></i>
+                    <div class="profile-badge">CSE</div>
+                </div>
+            </header>
+
+            <div class="study-tile">
+                <h3>Student Study Material</h3>
+                <div class="controls-row">
+                    <select id="semPicker" class="select-input">
+                        <option value="">Choose Semester</option>
+                        <option value="sem1">Semester 1</option>
+                        <option value="sem2">Semester 2</option>
+                        <option value="sem3">Semester 3</option>
+                        <option value="sem4">Semester 4</option>
+                    </select>
+
+                    <select id="subPicker" class="select-input" disabled>
+                        <option value="">Select Subject</option>
+                    </select>
+
+                    <button id="searchBtn" class="search-btn">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+
+                <div id="contentDisplay" class="material-view">
+                    <div style="text-align: center; color: #bbb;">
+                        <i class="fas fa-cloud-download-alt" style="font-size: 3rem; margin-bottom: 10px;"></i>
+                        <p>Select Semester & Subject to Load Materials</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+<nav class="bottom-nav">
+    <a href="..//index.html" class="nav-link active"><i class="fas fa-home"></i><span>Home</span></a>
+    <a href="..//webpages/studymaterial.html" class="nav-link"><i class="fas fa-folder"></i><span>Notes</span></a>
+    
+    <div class="nav-link" id="academicsTrigger">
+        <i class="fas fa-th-list"></i> <span>More</span>
+        
+        <div class="utility-menu" id="utilityMenu">
+            <div class="menu-header">Academic Tools</div>
+            <a href="..//webpages/ebooks.html"><i class="fas fa-book"></i> Ebooks</a>
+            <a href="..//webpages/pyqs.html"><i class="fas fa-file-alt"></i> PYQs</a>
+            <a href="..//webpages/syllabus.html"><i class="fas fa-scroll"></i> Syllabus</a>
+            <a href="..//webpages/timetable.html"><i class="fas fa-clock"></i> Timetable</a>
+            <a href="https://outr-erp.cet.edu.in/login"><i class="fas fa-calendar-check"></i> Attendance</a>
+            <a href ="..//webpages/rankers.html"><i class="fas fa-trophy"></i> Rankers</a>
+        </div>
+    </div>
+
+    <a href="#" class="nav-link"><i class="fas fa-code"></i><span>About Us</span></a>
+</nav>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Resource Menu Logic
+            const trigger = document.getElementById('resourcesTrigger');
+            const menu = document.getElementById('resourceMenu');
+            trigger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                menu.classList.toggle('show');
+            });
+            document.addEventListener('click', () => menu.classList.remove('show'));
+
+            // Material Fetch Logic
+            const semPicker = document.getElementById('semPicker');
+            const subPicker = document.getElementById('subPicker');
+            const searchBtn = document.getElementById('searchBtn');
+            const contentDisplay = document.getElementById('contentDisplay');
+
+            const subjectData = {
+                "sem1": [
+                    { label: "ADSA", url: "../academics/semester1/adsa.html" },
+                    { label: "WSN", url: "../academics/semester1/wsn.html" },
+                    { label: "DM", url: "../academics/semester1/dm.html" },
+                    { label: "MME", url: "../academics/semester1/mme.html" },
+                    { label: "ERPW", url: "../academics/semester1/erpw.html" }
+                ],
+                "sem2": [
+                    { label: "DM", url: "../academics/semester2/dm.html" },
+                    { label: "IoT", url: "../academics/semester2/iot.html" },
+                    { label: "HPC", url: "../academics/semester2/hpc.html" },
+                    { label: "OOAD", url: "../academics/semester2/ooad.html" },
+                    { label: "MLA", url: "../academics/semester2/mla.html" },
+                    { label: "CC", url: "../academics/semester2/cc.html" },
+                ],
+                "sem3": [
+                    { label: "ST", url: "../academics/semester3/st.html" }
+                ],
+                "sem4": [
+                    { label: "-", url: "../academics/semester4/no.html" }
+                ]
+            };
+
+            semPicker.addEventListener('change', function() {
+                const selectedSem = this.value;
+                subPicker.innerHTML = '<option value="">Select Subject</option>';
+                if (selectedSem && subjectData[selectedSem]) {
+                    subPicker.disabled = false;
+                    subjectData[selectedSem].forEach(item => {
+                        const opt = document.createElement('option');
+                        opt.value = item.url;
+                        opt.textContent = item.label;
+                        subPicker.appendChild(opt);
+                    });
+                } else {
+                    subPicker.disabled = true;
+                }
+            });
+
+            searchBtn.addEventListener('click', () => {
+                const url = subPicker.value;
+                if (!url) return alert("Please select a subject first.");
+                contentDisplay.innerHTML = '<div class="spinner"></div>';
+                setTimeout(() => {
+                    contentDisplay.innerHTML = `<iframe src="${url}" style="width:100%; height:600px; border:none;"></iframe>`;
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
