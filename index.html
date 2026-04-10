@@ -63,8 +63,92 @@
             </header>
 
             <div class="search-container">
+                <input type="text" placeholder="ex: adsa, pyq, syllabus" id="searchBox" placeholder="Type facebook or instagram">
                 <i class="fas fa-search"></i>
-                <input type="text" placeholder="Search notes, assignments...">
+
+            <script>
+                 document.getElementById("searchBox").addEventListener("keypress", function(event) {
+             if (event.key === "Enter") {
+            let value = this.value.toLowerCase();
+
+            if (value === "syllabus") {
+                window.location.href = "webpages/syllabus.html";
+            }
+            else if (value === "pyq") {
+                window.location.href = "webpages/syllabus.html";
+            }
+            else if (value === "pyqs") {
+                window.location.href = "webpages/syllabus.html";
+            }
+            else if (value === "ebooks") {
+                window.location.href = "webpages/ebooks.html";
+            }
+            else if (value === "books") {
+                window.location.href = "webpages/ebooks.html";
+            }
+            else if (value === "timetable") {
+                window.location.href = "webpages/ebooks.html";
+            }
+            else if (value === "time table") {
+                window.location.href = "webpages/ebooks.html";
+            }
+
+
+
+            if (value === "adsa") {
+                window.location.href = "academics/semester1/adsa.html";
+            } 
+            else if (value === "wsn") {
+                window.location.href = "academics/semester1/wsn.html";
+            }
+            else if (value === "dm") {
+                window.location.href = "academics/semester1/dm.html";
+            }
+            else if (value === "mme") {
+                window.location.href = "academics/semester1/wsn.html";
+            }
+            `else if (value === "erpw") {
+                window.location.href = "academics/semester1/wsn.html";
+            }
+                else if (value === "eprw") {
+                window.location.href = "academics/semester1/wsn.html";
+            }
+                else if (value === "rmipr") {
+                window.location.href = "academics/semester1/wsn.html";
+            }
+
+
+
+                else if (value === "iot") {
+                window.location.href = "academics/semester2/iot.html";
+            }
+                else if (value === "hpc") {
+                window.location.href = "academics/semester2/hpc.html";
+            }
+                else if (value === "ooad") {
+                window.location.href = "academics/semester2/ooad.html";
+            }
+                else if (value === "mla") {
+                window.location.href = "academics/semester2/mla.html";
+            }
+                else if (value === "cc") {
+                window.location.href = "academics/semester2/cc.html";
+            }
+                else if (value === "ml") {
+                window.location.href = "academics/semester2/mla.html";
+            } 
+                else if (value === "hpa") {
+                window.location.href = "academics/semester2/hpa.html";
+            }
+                else if (value === "st") {
+                window.location.href = "academics/semester3/st.html";
+            }
+
+            else {
+                alert("Site not found!");
+             } }});
+
+            </script>
             </div>
 
             <section class="schedule-section">
