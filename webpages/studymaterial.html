@@ -90,29 +90,25 @@
                 <span>OUTR MTech</span>
             </div>
     <ul class="nav-links">
-    <a href="..//index.html" style="color: inherit; text-decoration: none;">
-        <li><i class="fas fa-th-large"></i> Dashboard</li></a>
-    
-    <a href="..//studymaterial.html" style="color: inherit; text-decoration: none;">
-        <li><i class="fas fa-folder-open"></i> Study Material</li>
-    </a>
-    <a href="..//ebooks.html" style="color: inherit; text-decoration: none;">
+    <a href="../index.html" style="color: inherit; text-decoration: none;">
+    <li><i class="fas fa-th-large"></i> Dashboard</li></a>
+    <a href="studymaterial.html" style="color: inherit; text-decoration: none;">
+    <li><i class="fas fa-folder-open"></i> Study Material</li></a>
+    <a href="ebooks.html" style="color: inherit; text-decoration: none;">
     <li><i class="fas fa-book"></i> Ebooks</li></a>
-
-    <a href="..//pyqs.html" style="color: inherit; text-decoration: none;">
+    <a href="pyqs.html" style="color: inherit; text-decoration: none;">
     <li><i class="fas fa-file-alt"></i> PYQs</li></a>
-    <a href="..//syllabus.html" style="color: inherit; text-decoration: none;">
+    <a href="syllabus.html" style="color: inherit; text-decoration: none;">
     <li><i class="fas fa-scroll"></i> Syllabus</li></a>
-     <a href="../s/timetable.html" style="color: inherit; text-decoration: none;">
+     <a href="timetable.html" style="color: inherit; text-decoration: none;">
     <li><i class="fas fa-clock"></i> Timetable</li></a>
     <a href="https://outr-erp.cet.edu.in/login" style="color: inherit; text-decoration: none;">
     <li><i class="fas fa-calendar-check"></i> Attendance</li></a>
-    <a href="..//rankers.html" style="color: inherit; text-decoration: none;">
+    <a href="rankers.html" style="color: inherit; text-decoration: none;">
     <li><i class="fas fa-trophy"></i> Rankers</li></a>
-    <a href="..//contacts.html" style="color: inherit; text-decoration: none;">
+    <a href="contacts.html" style="color: inherit; text-decoration: none;">
     <li><i class="fas fa-code"></i> About Us</li></a>
-</ul>
-            <div class="sidebar-footer">Designed and Developed by #ALEKH</div>
+</ul>     <div class="sidebar-footer">Designed and Developed by #ALEKH</div>
         </nav>
 
         <main class="main-content">
@@ -155,94 +151,106 @@
         </main>
 
 <nav class="bottom-nav">
-    <a href="..//index.html" class="nav-link active"><i class="fas fa-home"></i><span>Home</span></a>
-    <a href="..//webpages/studymaterial.html" class="nav-link"><i class="fas fa-folder"></i><span>Notes</span></a>
+    <a href="../index.html" class="nav-link active"><i class="fas fa-home"></i><span>Home</span></a>
+    <a href="../webpages/studymaterial.html" class="nav-link"><i class="fas fa-folder"></i><span>Notes</span></a>
     
-    <div class="nav-link" id="academicsTrigger">
-        <i class="fas fa-th-list"></i> <span>More</span>
-        
-        <div class="utility-menu" id="utilityMenu">
-            <div class="menu-header">Academic Tools</div>
-            <a href="..//webpages/ebooks.html"><i class="fas fa-book"></i> Ebooks</a>
-            <a href="..//webpages/pyqs.html"><i class="fas fa-file-alt"></i> PYQs</a>
-            <a href="..//webpages/syllabus.html"><i class="fas fa-scroll"></i> Syllabus</a>
-            <a href="..//webpages/timetable.html"><i class="fas fa-clock"></i> Timetable</a>
-            <a href="https://outr-erp.cet.edu.in/login"><i class="fas fa-calendar-check"></i> Attendance</a>
-            <a href ="..//webpages/rankers.html"><i class="fas fa-trophy"></i> Rankers</a>
-        </div>
-    </div>
-
-    <a href="#" class="nav-link"><i class="fas fa-code"></i><span>About Us</span></a>
+<nav class="bottom-nav">
+    <a href="../index.html" class="nav-link"><i class="fas fa-home"></i><span>Home</span></a>
+    <a href="studymaterial.html" class="nav-link active"><i class="fas fa-folder"></i><span>Notes</span></a>
+    <a href="syllabus.html" class="nav-link"><i class="fas fa-folder"></i><span>Sylalabus</span></a>
+    <a href="contacts.html" class="nav-link"><i class="fas fa-code"></i><span>About Us</span></a>
 </nav>
     </div>
 
     <script src="../script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Resource Menu Logic
-            const trigger = document.getElementById('resourcesTrigger');
-            const menu = document.getElementById('resourceMenu');
+    <style>
+    /* ... existing styles ... */
+
+    /* Mobile View: Increase height of dropdowns and buttons */
+    @media (max-width: 768px) {
+        .select-input, .search-btn {
+            height: 60px; /* Increased from 50px for better tap targets */
+            font-size: 16px; /* Prevents iOS auto-zoom on focus */
+        }
+        
+        .controls-row {
+            gap: 20px; /* More breathing room */
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // FIXED: Resource Menu Logic (Matched IDs with HTML)
+        const trigger = document.getElementById('academicsTrigger'); // Changed from resourcesTrigger
+        const menu = document.getElementById('utilityMenu');       // Changed from resourceMenu
+        
+        if(trigger && menu) {
             trigger.addEventListener('click', (e) => {
                 e.stopPropagation();
                 menu.classList.toggle('show');
             });
-            document.addEventListener('click', () => menu.classList.remove('show'));
+        }
 
-            // Material Fetch Logic
-            const semPicker = document.getElementById('semPicker');
-            const subPicker = document.getElementById('subPicker');
-            const searchBtn = document.getElementById('searchBtn');
-            const contentDisplay = document.getElementById('contentDisplay');
-
-            const subjectData = {
-                "sem1": [
-                    { label: "ADSA", url: "../academics/semester1/adsa.html" },
-                    { label: "WSN", url: "../academics/semester1/wsn.html" },
-                    { label: "DM", url: "../academics/semester1/dm.html" },
-                    { label: "MME", url: "../academics/semester1/mme.html" },
-                    { label: "ERPW", url: "../academics/semester1/erpw.html" }
-                ],
-                "sem2": [
-                    { label: "DM", url: "../academics/semester2/dm.html" },
-                    { label: "IoT", url: "../academics/semester2/iot.html" },
-                    { label: "HPC", url: "../academics/semester2/hpc.html" },
-                    { label: "OOAD", url: "../academics/semester2/ooad.html" },
-                    { label: "MLA", url: "../academics/semester2/mla.html" },
-                    { label: "CC", url: "../academics/semester2/cc.html" },
-                ],
-                "sem3": [
-                    { label: "ST", url: "../academics/semester3/st.html" }
-                ],
-                "sem4": [
-                    { label: "-", url: "../academics/semester4/no.html" }
-                ]
-            };
-
-            semPicker.addEventListener('change', function() {
-                const selectedSem = this.value;
-                subPicker.innerHTML = '<option value="">Select Subject</option>';
-                if (selectedSem && subjectData[selectedSem]) {
-                    subPicker.disabled = false;
-                    subjectData[selectedSem].forEach(item => {
-                        const opt = document.createElement('option');
-                        opt.value = item.url;
-                        opt.textContent = item.label;
-                        subPicker.appendChild(opt);
-                    });
-                } else {
-                    subPicker.disabled = true;
-                }
-            });
-
-            searchBtn.addEventListener('click', () => {
-                const url = subPicker.value;
-                if (!url) return alert("Please select a subject first.");
-                contentDisplay.innerHTML = '<div class="spinner"></div>';
-                setTimeout(() => {
-                    contentDisplay.innerHTML = `<iframe src="${url}" style="width:100%; height:600px; border:none;"></iframe>`;
-                }, 500);
-            });
+        document.addEventListener('click', () => {
+            if(menu) menu.classList.remove('show');
         });
-    </script>
+
+        // Material Fetch Logic (Keep this as is, it's correct)
+        const semPicker = document.getElementById('semPicker');
+        const subPicker = document.getElementById('subPicker');
+        const searchBtn = document.getElementById('searchBtn');
+        const contentDisplay = document.getElementById('contentDisplay');
+
+        const subjectData = {
+            "sem1": [
+                { label: "ADSA", url: "../academics/semester1/adsa.html" },
+                { label: "WSN", url: "../academics/semester1/wsn.html" },
+                { label: "DM", url: "../academics/semester1/dm.html" },
+                { label: "MME", url: "../academics/semester1/mme.html" },
+                { label: "ERPW", url: "../academics/semester1/erpw.html" }
+            ],
+            "sem2": [
+                { label: "DM", url: "../academics/semester2/dm.html" },
+                { label: "IoT", url: "../academics/semester2/iot.html" },
+                { label: "HPC", url: "../academics/semester2/hpc.html" },
+                { label: "OOAD", url: "../academics/semester2/ooad.html" },
+                { label: "MLA", url: "../academics/semester2/mla.html" },
+                { label: "CC", url: "../academics/semester2/cc.html" },
+            ],
+            "sem3": [
+                { label: "ST", url: "../academics/semester3/st.html" }
+            ],
+            "sem4": [
+                { label: "-", url: "../academics/semester4/no.html" }
+            ]
+        };
+
+        semPicker.addEventListener('change', function() {
+            const selectedSem = this.value;
+            subPicker.innerHTML = '<option value="">Select Subject</option>';
+            if (selectedSem && subjectData[selectedSem]) {
+                subPicker.disabled = false;
+                subjectData[selectedSem].forEach(item => {
+                    const opt = document.createElement('option');
+                    opt.value = item.url;
+                    opt.textContent = item.label;
+                    subPicker.appendChild(opt);
+                });
+            } else {
+                subPicker.disabled = true;
+            }
+        });
+
+        searchBtn.addEventListener('click', () => {
+            const url = subPicker.value;
+            if (!url) return alert("Please select a subject first.");
+            contentDisplay.innerHTML = '<div class="spinner"></div>';
+            setTimeout(() => {
+                contentDisplay.innerHTML = `<iframe src="${url}" style="width:100%; height:600px; border:none;"></iframe>`;
+            }, 500);
+        });
+    });
+</script>
 </body>
 </html>
