@@ -63,44 +63,46 @@
             </header>
 
             <div class="search-container">
-                <input type="text" placeholder="ex: adsa, pyq, syllabus" id="searchBox" placeholder="Type facebook or instagram">
-                <i class="fas fa-search"></i>
+    <input type="text" placeholder="ex: adsa, pyq, syllabus" id="searchBox" list="searchSuggestions" autocomplete="off">
+    <i class="fas fa-search" id="searchBtn" style="cursor: pointer;"></i>
 
-            <script>
-                 document.getElementById("searchBox").addEventListener("keypress", function(event) {
-             if (event.key === "Enter") {
-            let value = this.value.toLowerCase();
+    <datalist id="searchSuggestions">
+        <option value="adsa"></option>
+        <option value="books"></option>
+        <option value="cc"></option>
+        <option value="dm"></option>
+        <option value="ebooks"></option>
+        <option value="erpw"></option>
+        <option value="hpc"></option>
+        <option value="iot"></option>
+        <option value="mla"></option>
+        <option value="mme"></option>
+        <option value="ooad"></option>
+        <option value="pyqs"></option>
+        <option value="rmipr"></option>
+        <option value="st"></option>
+        <option value="syllabus"></option>
+        <option value="timetable"></option>
+        <option value="wsn"></option>
+    </datalist>
+
+    <script>
+        // Store the search logic in a function so both Enter and Click can use it
+        function performSearch() {
+            let value = document.getElementById("searchBox").value.toLowerCase().trim();
 
             if (value === "syllabus") {
                 window.location.href = "webpages/syllabus.html";
             }
-            else if (value === "pyq") {
+            else if (value === "pyq" || value === "pyqs") {
                 window.location.href = "webpages/pyqs.html";
             }
-            else if (value === "pyqs") {
-                window.location.href = "webpages/pyqs.html";
-            }
-            else if (value === "ebooks") {
+            else if (["ebooks", "ebook", "books", "book"].includes(value)) {
                 window.location.href = "webpages/ebooks.html";
             }
-            else if (value === "ebook") {
-                window.location.href = "webpages/ebooks.html";
-            }
-            else if (value === "books") {
-                window.location.href = "webpages/ebooks.html";
-            }
-            else if (value === "book") {
-                window.location.href = "webpages/ebooks.html";
-            }
-            else if (value === "timetable") {
+            else if (value === "timetable" || value === "time table") {
                 window.location.href = "webpages/timetable.html";
             }
-            else if (value === "time table") {
-                window.location.href = "webpages/timetable.html";
-            }
-
-
-
             else if (value === "adsa") {
                 window.location.href = "academics/semester1/adsa.html";
             } 
@@ -113,49 +115,48 @@
             else if (value === "mme") {
                 window.location.href = "academics/semester1/mme.html";
             }
-            else if (value === "erpw") {
+            else if (value === "erpw" || value === "eprw") {
                 window.location.href = "academics/semester1/erpw.html";
             }
-                else if (value === "eprw") {
-                window.location.href = "academics/semester1/erpw.html";
-            }
-                else if (value === "rmipr") {
+            else if (value === "rmipr") {
                 window.location.href = "academics/semester1/rmipr.html";
             }
-
-
-
-                else if (value === "iot") {
+            else if (value === "iot") {
                 window.location.href = "academics/semester2/iot.html";
             }
-                else if (value === "hpc") {
+            else if (value === "hpc" || value === "hpa") {
                 window.location.href = "academics/semester2/hpc.html";
             }
-                else if (value === "ooad") {
+            else if (value === "ooad") {
                 window.location.href = "academics/semester2/ooad.html";
             }
-                else if (value === "mla") {
+            else if (value === "mla" || value === "ml") {
                 window.location.href = "academics/semester2/mla.html";
             }
-                else if (value === "cc") {
+            else if (value === "cc") {
                 window.location.href = "academics/semester2/cc.html";
             }
-                else if (value === "ml") {
-                window.location.href = "academics/semester2/mla.html";
-            } 
-                else if (value === "hpa") {
-                window.location.href = "academics/semester2/hpc.html";
-            }
-                else if (value === "st") {
+            else if (value === "st") {
                 window.location.href = "academics/semester3/st.html";
             }
-
-            else {
+            else if (value !== "") {
                 alert("Site not found!");
-             } }});
+            }
+        }
 
-            </script>
-            </div>
+        // Trigger on Enter Key
+        document.getElementById("searchBox").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                performSearch();
+            }
+        });
+
+        // Trigger on Search Icon Click
+        document.getElementById("searchBtn").addEventListener("click", function() {
+            performSearch();
+        });
+    </script>
+</div>
 
             <section class="schedule-section">
                 <h3>Schedule & Classes</h3>
