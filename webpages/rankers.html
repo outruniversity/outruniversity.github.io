@@ -3,121 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Rankers | OUTR MTech CSE</title>
+    <title>Syllabus | OUTR MTech CSE</title>
     
     <link rel="stylesheet" href="../style.css"> 
-    <link rel="stylesheet" href="https:/cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https:/fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        .leaderboard-container {
+        .syllabus-container {
             width: 100%;
             margin-top: 20px;
         }
 
-        /* Podium Styling */
-        .podium {
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            gap: 15px;
-            margin-bottom: 40px;
-            padding-top: 20px;
-        }
-
-        .podium-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            flex: 1;
-            max-width: 120px;
-        }
-
-        .rank-avatar {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: #eee;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            border: 4px solid white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            position: relative;
-        }
-
-        .crown {
-            position: absolute;
-            top: -15px;
-            font-size: 18px;
-            color: #FFD700;
-        }
-
-        .podium-item.first .rank-avatar { width: 90px; height: 90px; border-color: #FFD700; background: #fffdf0; color: #FFD700; }
-        .podium-item.second .rank-avatar { border-color: #C0C0C0; background: #f5f5f5; color: #C0C0C0; }
-        .podium-item.third .rank-avatar { border-color: #CD7F32; background: #faf3ee; color: #CD7F32; }
-
-        .rank-name { font-size: 13px; font-weight: 600; color: var(--text-dark); margin-top: 5px; }
-        .rank-score { font-size: 11px; color: var(--primary); font-weight: 700; }
-
-        /* List Styling */
-        .rank-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .rank-row {
-            display: flex;
-            align-items: center;
+        .category-header {
+            background: var(--primary);
+            color: white;
             padding: 15px 20px;
-            background: var(--white);
+            font-size: 18px;
+            font-weight: 600;
             border-radius: 12px;
-            border: 1px solid var(--border);
-            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(142, 108, 239, 0.2);
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .rank-number {
-            width: 30px;
-            font-weight: 700;
-            color: var(--text-light);
-            font-size: 14px;
-        }
-
-        .rank-row .user-info {
-            flex-grow: 1;
+        .syllabus-list {
+            margin-top: 20px;
             display: flex;
             flex-direction: column;
+            gap: 12px;
         }
 
-        .rank-row .user-name {
-            font-size: 14px;
+        .syllabus-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 22px;
+            background: var(--white);
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .syllabus-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-color: var(--primary);
+        }
+
+        .syllabus-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .syllabus-info i {
+            color: var(--primary);
+            font-size: 20px;
+            background: var(--primary-soft);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+
+        .syllabus-info span {
+            font-size: 15px;
             font-weight: 600;
             color: var(--text-dark);
         }
 
-        .rank-row .user-meta {
-            font-size: 11px;
-            color: var(--text-light);
+        .download-btn {
+            text-decoration: none;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .cgpa-badge {
-            background: var(--primary-soft);
-            color: var(--primary);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
+        .download-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
         }
 
         @media (max-width: 768px) {
-            .podium { gap: 10px; }
-            .rank-avatar { width: 60px; height: 60px; font-size: 20px; }
-            .podium-item.first .rank-avatar { width: 75px; height: 75px; }
+            .syllabus-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .download-btn {
+                width: 100%;
+                justify-content: center;
+            }
             .welcome-text { display: none !important; }
             header { justify-content: flex-end; }
             .mobile-branding { display: block; margin-right: auto; }
@@ -128,27 +118,30 @@
 <body>
     <div class="dashboard-wrapper">
         <nav class="sidebar">
-            <div class="logo-area"> 
+            <div class="logo-area">
                 <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
                 <span>OUTR MTech</span>
             </div>
     <ul class="nav-links">
     <a href="../index.html" style="color: inherit; text-decoration: none;">
-    <li><i class="fas fa-th-large"></i> Dashboard</li></a>
+        <li><i class="fas fa-th-large"></i> Dashboard</li></a>
+    
     <a href="studymaterial.html" style="color: inherit; text-decoration: none;">
-    <li><i class="fas fa-folder-open"></i> Study Material</li></a>
+        <li><i class="fas fa-folder-open"></i> Study Material</li>
+    </a>
     <a href="ebooks.html" style="color: inherit; text-decoration: none;">
     <li><i class="fas fa-book"></i> Ebooks</li></a>
+
     <a href="pyqs.html" style="color: inherit; text-decoration: none;">
     <li><i class="fas fa-file-alt"></i> PYQs</li></a>
     <a href="syllabus.html" style="color: inherit; text-decoration: none;">
-    <li><i class="fas fa-scroll"></i> Syllabus</li></a>
+    <li class="active"><i class="fas fa-scroll"></i> Syllabus</li></a>
      <a href="timetable.html" style="color: inherit; text-decoration: none;">
     <li><i class="fas fa-clock"></i> Timetable</li></a>
     <a href="https://outr-erp.cet.edu.in/login" style="color: inherit; text-decoration: none;">
     <li><i class="fas fa-calendar-check"></i> Attendance</li></a>
     <a href="rankers.html" style="color: inherit; text-decoration: none;">
-    <li class="active"><i class="fas fa-trophy"></i> Rankeras</li></a>
+    <li><i class="fas fa-trophy"></i> Rankers</li></a>
     <a href="contacts.html" style="color: inherit; text-decoration: none;">
     <li><i class="fas fa-code"></i> About Us</li></a>
 </ul>
