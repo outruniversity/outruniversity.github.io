@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>E-Books | OUTR MTech CSE</title>
+    <title>Syllabus | OUTR MTech CSE</title>
     
     <link rel="stylesheet" href="../style.css"> 
-    <link rel="stylesheet" href="https:/cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https:/fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        .ebook-container {
+        .syllabus-container {
             width: 100%;
             margin-top: 20px;
         }
 
-        .semester-header {
+        .category-header {
             background: var(--primary);
             color: white;
             padding: 15px 20px;
@@ -23,35 +23,57 @@
             font-weight: 600;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(142, 108, 239, 0.2);
-            margin-top: 30px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .note-list {
-            margin-top: 15px;
+        .syllabus-list {
+            margin-top: 20px;
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
 
-        .note-card {
+        .syllabus-card {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
+            padding: 18px 22px;
             background: var(--white);
-            border-radius: 12px;
+            border-radius: 15px;
             border: 1px solid var(--border);
-            transition: 0.3s;
+            transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        .note-card:hover {
-            transform: translateY(-2px);
+        .syllabus-card:hover {
+            transform: translateX(5px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-color: var(--primary);
         }
 
-        .note-card span {
-            font-size: 14px;
-            font-weight: 500;
+        .syllabus-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .syllabus-info i {
+            color: var(--primary);
+            font-size: 20px;
+            background: var(--primary-soft);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+
+        .syllabus-info span {
+            font-size: 15px;
+            font-weight: 600;
             color: var(--text-dark);
         }
 
@@ -59,12 +81,15 @@
             text-decoration: none;
             background: var(--bg-light);
             color: var(--text-dark);
-            padding: 8px 16px;
+            padding: 10px 20px;
             border: 1px solid #ddd;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 13px;
             font-weight: 600;
             transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .download-btn:hover {
@@ -74,15 +99,18 @@
         }
 
         @media (max-width: 768px) {
-            .note-card {
+            .syllabus-card {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 12px;
+                gap: 15px;
             }
             .download-btn {
                 width: 100%;
-                text-align: center;
+                justify-content: center;
             }
+            .welcome-text { display: none !important; }
+            header { justify-content: flex-end; }
+            .mobile-branding { display: block; margin-right: auto; }
             .main-content { padding-bottom: 100px !important; }
         }
     </style>
@@ -90,21 +118,24 @@
 <body>
     <div class="dashboard-wrapper">
         <nav class="sidebar">
-            <div class="logo-area"> 
+            <div class="logo-area">
                 <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
                 <span>OUTR MTech</span>
             </div>
     <ul class="nav-links">
     <a href="../index.html" style="color: inherit; text-decoration: none;">
-    <li><i class="fas fa-th-large"></i> Dashboard</li></a>
+        <li><i class="fas fa-th-large"></i> Dashboard</li></a>
+    
     <a href="studymaterial.html" style="color: inherit; text-decoration: none;">
-    <li><i class="fas fa-folder-open"></i> Study Material</li></a>
+        <li><i class="fas fa-folder-open"></i> Study Material</li>
+    </a>
     <a href="ebooks.html" style="color: inherit; text-decoration: none;">
-    <li class="active"><i class="fas fa-book"></i> Ebooks</li></a>
+    <li><i class="fas fa-book"></i> Ebooks</li></a>
+
     <a href="pyqs.html" style="color: inherit; text-decoration: none;">
     <li><i class="fas fa-file-alt"></i> PYQs</li></a>
     <a href="syllabus.html" style="color: inherit; text-decoration: none;">
-    <li><i class="fas fa-scroll"></i> Syllabus</li></a>
+    <li class="active"><i class="fas fa-scroll"></i> Syllabus</li></a>
      <a href="timetable.html" style="color: inherit; text-decoration: none;">
     <li><i class="fas fa-clock"></i> Timetable</li></a>
     <a href="https://outr-erp.cet.edu.in/login" style="color: inherit; text-decoration: none;">
