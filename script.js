@@ -71,19 +71,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-// --- 3. FRAGMENT LOADING LOGIC ---
+    // --- 3. FRAGMENT LOADING LOGIC ---
     const loadFragment = (fileName) => {
         if (!loadingLine) return;
 
         loadingLine.style.opacity = '1';
         loadingLine.style.width = '30%';
 
-        // Extract MM-DD from the file path (e.g., "dailyactivity/02-15.html" -> "02-15")
-        const dateMatch = fileName.match(/(\d{2})-(\d{2})/);
+        // Extract MM-DD safely from the file path
         let monthNum = 0, dayNum = 0;
-        if (dateMatch) {
-            monthNum = parseInt(dateMatch[1], 10);
-            dayNum = parseInt(dateMatch[2], 10);
+        if (fileName) {
+            const dateMatch = fileName.match(/(\d{2})-(\d{2})/);
+            if (dateMatch) {
+                monthNum = parseInt(dateMatch[1], 10);
+                dayNum = parseInt(dateMatch[2], 10);
+            }
         }
 
         fetch(fileName)
@@ -95,19 +97,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderContent(html);
             })
             .catch(() => {
-                // Fallback to Timetable Logic if file is missing
+                // Fallback to Timetable Logic if file is missing or fetch fails
                 const fallbackContent = getTimetableFallback(monthNum, dayNum);
                 renderContent(fallbackContent);
             });
     };
 
-    // --- 3.1 TIMETABLE FALLBACK GENERATOR ---
+    // --- 3.1 RENDER TRANSITION CONTENT ---
+    function renderContent(content) {
+        if (!loadingLine || !fragmentContainer) return;
+        loadingLine.style.width = '100%';
+        setTimeout(() => {
+            fragmentContainer.innerHTML = content;
+            loadingLine.style.opacity = '0';
+            setTimeout(() => { loadingLine.style.width = '0%'; }, 300);
+        }, 200);
+    }
+
+    // --- 3.2 TIMETABLE FALLBACK GENERATOR ---
     function getTimetableFallback(month, day) {
-        // Helper to convert MM-DD into a comparable integer value (MMDD)
+        // Safe check for bad extractions
+        if (month === 0 || day === 0) {
+            return `
+                <div class="stats-row">
+                    <div class="stat-card">No Notes Yet</div>
+                    <div class="stat-card highlight">No Classes</div>
+                </div>`;
+        }
+
+        // Convert MM-DD into a comparable integer value (MMDD)
         const dateVal = (month * 100) + day;
         
-        // Calculate Day of Week for the target date (needed to filter classes)
-        // Uses current year since the calendar scroller generates for the current year
+        // Calculate Day of Week cleanly
         const targetYear = new Date().getFullYear();
         const targetDateObj = new Date(targetYear, month - 1, day);
         const dayOfWeek = targetDateObj.toLocaleDateString('en-US', { weekday: 'long' });
@@ -124,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
             daySlotsHTML = getSem2Slots(dayOfWeek);
         }
 
-        // Default layout if outside semesters or on weekends
+        // Fallback layout if outside semesters or on weekends
         if (!semesterTitle || !daySlotsHTML) {
             return `
                 <div class="stats-row">
@@ -256,7 +277,6 @@ if (academicsTrigger && utilityMenu) {
         utilityMenu.classList.toggle('show');
     });
 
-    // Close menu when clicking anywhere else
     document.addEventListener('click', () => {
         utilityMenu.classList.remove('show');
     });
