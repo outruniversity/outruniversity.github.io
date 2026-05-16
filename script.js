@@ -71,12 +71,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 3. FRAGMENT LOADING LOGIC ---
+// --- 3. FRAGMENT LOADING LOGIC ---
     const loadFragment = (fileName) => {
         if (!loadingLine) return;
 
         loadingLine.style.opacity = '1';
         loadingLine.style.width = '30%';
+
+        // Extract MM-DD from the file path (e.g., "dailyactivity/02-15.html" -> "02-15")
+        const dateMatch = fileName.match(/(\d{2})-(\d{2})/);
+        let monthNum = 0, dayNum = 0;
+        if (dateMatch) {
+            monthNum = parseInt(dateMatch[1], 10);
+            dayNum = parseInt(dateMatch[2], 10);
+        }
 
         fetch(fileName)
             .then(response => {
@@ -87,22 +95,128 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderContent(html);
             })
             .catch(() => {
-                const fallback = `
-                    <div class="stats-row">
-                        <div class="stat-card">No Notes Yet</div>
-                        <div class="stat-card highlight">No Classes</div>
-                    </div>`;
-                renderContent(fallback);
+                // Fallback to Timetable Logic if file is missing
+                const fallbackContent = getTimetableFallback(monthNum, dayNum);
+                renderContent(fallbackContent);
             });
     };
 
-    function renderContent(content) {
-        loadingLine.style.width = '100%';
-        setTimeout(() => {
-            fragmentContainer.innerHTML = content;
-            loadingLine.style.opacity = '0';
-            setTimeout(() => { loadingLine.style.width = '0%'; }, 300);
-        }, 200);
+    // --- 3.1 TIMETABLE FALLBACK GENERATOR ---
+    function getTimetableFallback(month, day) {
+        // Helper to convert MM-DD into a comparable integer value (MMDD)
+        const dateVal = (month * 100) + day;
+        
+        // Calculate Day of Week for the target date (needed to filter classes)
+        // Uses current year since the calendar scroller generates for the current year
+        const targetYear = new Date().getFullYear();
+        const targetDateObj = new Date(targetYear, month - 1, day);
+        const dayOfWeek = targetDateObj.toLocaleDateString('en-US', { weekday: 'long' });
+
+        let semesterTitle = "";
+        let daySlotsHTML = "";
+
+        // Determine Semester range
+        if (dateVal >= 818 && dateVal <= 1223) {
+            semesterTitle = "Semester 1 Timetable";
+            daySlotsHTML = getSem1Slots(dayOfWeek);
+        } else if (dateVal >= 202 && dateVal <= 529) {
+            semesterTitle = "Semester 2 Timetable";
+            daySlotsHTML = getSem2Slots(dayOfWeek);
+        }
+
+        // Default layout if outside semesters or on weekends
+        if (!semesterTitle || !daySlotsHTML) {
+            return `
+                <div class="stats-row">
+                    <div class="stat-card">No Notes Yet</div>
+                    <div class="stat-card highlight">No Classes</div>
+                </div>`;
+        }
+
+        // Return formatted schedule with the disclaimer note at the bottom
+        return `
+            <div class="mobile-timetable" style="padding: 0; margin: 0;">
+                <h3 style="font-size: 16px; color: var(--primary); margin: 0 0 15px 0;">${semesterTitle} (${dayOfWeek})</h3>
+                <div class="day-card" style="margin-bottom: 15px;">
+                    ${daySlotsHTML}
+                </div>
+                <p style="font-size: 11px; color: #999; margin-top: 15px; font-style: italic;">
+                    * This is according to the timetable, not actual class schedule.
+                </p>
+            </div>`;
+    }
+
+    // Helper data for Semester 1 Mobile Layout
+    function getSem1Slots(day) {
+        switch(day) {
+            case 'Monday':
+                return `
+                    <div class="slot"><span class="time">10:00 - 11:00</span><span class="subject">RM & IPR</span></div>
+                    <div class="slot"><span class="time">11:00 - 12:00</span><span class="subject">DM</span></div>
+                    <div class="slot"><span class="time">12:00 - 01:00</span><span class="subject">WSN</span></div>
+                    <div class="slot"><span class="time">02:00 - 04:00</span><span class="subject">ERPW</span></div>
+                    <div class="slot"><span class="time">04:00 - 05:00</span><span class="subject">ADSA</span></div>`;
+            case 'Tuesday':
+                return `
+                    <div class="slot"><span class="time">10:00 - 11:00</span><span class="subject">MME</span></div>
+                    <div class="slot"><span class="time">11:00 - 12:00</span><span class="subject">WSN</span></div>
+                    <div class="slot"><span class="time">02:00 - 04:00</span><span class="subject">ADSA LAB</span></div>`;
+            case 'Wednesday':
+                return `
+                    <div class="slot"><span class="time">10:00 - 11:00</span><span class="subject">RM & IPR</span></div>
+                    <div class="slot"><span class="time">11:00 - 12:00</span><span class="subject">DM</span></div>
+                    <div class="slot"><span class="time">12:00 - 01:00</span><span class="subject">WSN</span></div>
+                    <div class="slot"><span class="time">02:00 - 04:00</span><span class="subject">COMPUTING LAB-I</span></div>
+                    <div class="slot"><span class="time">04:00 - 05:00</span><span class="subject">ADSA</span></div>`;
+            case 'Thursday':
+                return `
+                    <div class="slot"><span class="time">12:00 - 01:00</span><span class="subject">MME</span></div>
+                    <div class="slot"><span class="time">02:00 - 04:00</span><span class="subject">COMPUTING LAB-I</span></div>
+                    <div class="slot"><span class="time">04:00 - 05:00</span><span class="subject">ADSA</span></div>`;
+            case 'Friday':
+                return `
+                    <div class="slot"><span class="time">01:00 - 02:00</span><span class="subject">DM</span></div>
+                    <div class="slot"><span class="time">02:00 - 04:00</span><span class="subject">ADSA LAB</span></div>`;
+            default:
+                return ''; // Weekends
+        }
+    }
+
+    // Helper data for Semester 2 Mobile Layout
+    function getSem2Slots(day) {
+        switch(day) {
+            case 'Monday':
+                return `<div class="slot"><span class="time">11:00 - 01:00</span><span class="subject">Disaster Mgmt</span></div>`;
+            case 'Tuesday':
+                return `
+                    <div class="slot"><span class="time">09:00 - 11:00</span><span class="subject">IoT</span></div>
+                    <div class="slot"><span class="time">11:00 - 12:00</span><span class="subject">OOAD</span></div>
+                    <div class="slot"><span class="time">12:00 - 01:00</span><span class="subject">MLA</span></div>`;
+            case 'Wednesday':
+                return `
+                    <div class="slot"><span class="time">09:00 - 10:00</span><span class="subject">Project</span></div>
+                    <div class="slot"><span class="time">10:00 - 12:00</span><span class="subject">Comp Lab-II</span></div>
+                    <div class="slot"><span class="time">12:00 - 01:00</span><span class="subject">HPC</span></div>
+                    <div class="slot"><span class="time">02:00 - 04:00</span><span class="subject">Comp Lab-II / Project</span></div>
+                    <div class="slot"><span class="time">04:00 - 05:00</span><span class="subject">CC</span></div>`;
+            case 'Thursday':
+                return `
+                    <div class="slot"><span class="time">10:00 - 11:00</span><span class="subject">OOAD</span></div>
+                    <div class="slot"><span class="time">11:00 - 12:00</span><span class="subject">HPC</span></div>
+                    <div class="slot"><span class="time">12:00 - 01:00</span><span class="subject">IoT</span></div>
+                    <div class="slot"><span class="time">01:00 - 02:00</span><span class="subject">Project</span></div>
+                    <div class="slot"><span class="time">02:00 - 03:00</span><span class="subject">Project</span></div>
+                    <div class="slot"><span class="time">03:00 - 04:00</span><span class="subject">MLA</span></div>
+                    <div class="slot"><span class="time">04:00 - 05:00</span><span class="subject">CC</span></div>`;
+            case 'Friday':
+                return `
+                    <div class="slot"><span class="time">09:00 - 10:00</span><span class="subject">OOAD</span></div>
+                    <div class="slot"><span class="time">10:00 - 11:00</span><span class="subject">CC</span></div>
+                    <div class="slot"><span class="time">11:00 - 12:00</span><span class="subject">HPC</span></div>
+                    <div class="slot"><span class="time">12:00 - 01:00</span><span class="subject">MLA</span></div>`;
+            default:
+                return ''; // Weekends
+        }
     }
 
     // --- 4. EVENT DELEGATION FOR SCROLLER ---
