@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>OUTR || E-Classroom</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <nav class="sidebar">
+    <div class="logo-area"> 
+        <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+        <span>MTech - Other</span>
+    </div>
+    <ul class="nav-links">
+    <li class="active"><i class="fas fa-th-large"></i> Dashboard</li>
+    
+    <a href="#" style="color: inherit; text-decoration: none;">
+        <li><i class="fas fa-folder-open"></i> Study Material</li>
+    </a>
+    <a href="#" style="color: inherit; text-decoration: none;">
+    <li><i class="fas fa-book"></i> Ebooks</li></a>
+
+    <a href="#" style="color: inherit; text-decoration: none;">
+    <li><i class="fas fa-file-alt"></i> PYQs</li></a>
+    <a href="#" style="color: inherit; text-decoration: none;">
+    <li><i class="fas fa-scroll"></i> Syllabus</li></a>
+     <a href="#" style="color: inherit; text-decoration: none;">
+    <li><i class="fas fa-clock"></i> Timetable</li></a>
+    <a href="#" style="color: inherit; text-decoration: none;">
+    <li><i class="fas fa-calendar-check"></i> Attendance</li></a>
+    <a href="#" style="color: inherit; text-decoration: none;">
+        <li><i class="fas fa-newspaper"></i> Campus Life</li>
+    <a href="#" style="color: inherit; text-decoration: none;">
+    <li><i class="fas fa-code"></i> About Us</li></a>
+</ul>
+    <div class="sidebar-footer">DESIGNED AND DEVELOPED BY #ALEKH</div>
+</nav>
+
+        <main class="main-content">
+            <header>
+                <div class="mobile-branding">OUTR MTech</div>
+                <h2 class="welcome-text">Welcome Back,</h2>
+                <div class="header-right">
+                    <i class="fas fa-bell bell-icon"></i>
+                    
+                    <div class="profile-container" id="profileToggle">
+                        <div class="profile-badge">OT</div>
+                        
+                        <div class="branch-dropdown" id="branchMenu">
+                            <div class="dropdown-header">Other Branches</div>
+                            <a href="../cse/index.html"><i class="fas fa-microchip"></i> CSE</a>
+                            <a href="../it/index.html"><i class="fas fa-microchip"></i> IT</a>
+                            <a href="../mca/index.html"><i class="fas fa-microchip"></i> MCA</a>
+                            <a href="../mba/index.html"><i class="fas fa-clapperboard"></i> MBA</a>
+                            <a href="../pse/index.html"><i class="fas fa-bolt"></i> PSE</a>
+                            <a href="../ped/index.html"><i class="fas fa-bolt"></i> PED</a>
+                            <a href="../msd/index.html"><i class="fas fa-clapperboard"></i> MSD</a>
+                            <a href="../iem/index.html"><i class="fas fa-clapperboard"></i> IE&M</a>
+                            <a href="../other/index.html"><i class="fas fa-flask"></i> other</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="search-container">
+    <input type="text" placeholder="ex: adsa, pyq, syllabus" id="searchBox" list="searchSuggestions" autocomplete="off">
+    <i class="fas fa-search" id="searchBtn" style="cursor: pointer;"></i>
+
+    
+</div>
+
+            <section class="schedule-section">
+                <h3>Schedule & Classes</h3>
+                <div class="date-scroller" id="dateScroller"></div>
+
+                <div class="loader-track">
+                    <div id="loadingLine" class="loading-bar"></div>
+                </div>
+            </section>
+
+            <div id="fragmentContainer" class="fragment-container">
+                <div class="placeholder-text">Loading, please wait..</div>
+            </div> 
+            
+            <div style="height: 40px;"></div>
+
+            <section class="study-list">
+                <h3>ClassNotes</h3>
+                <div class="material-card">
+                    <div class="mat-icon purple"><i class="fas fa-code"></i></div>
+                    <div class="mat-details">
+                        <h4>SUBJECT - 1</h4>
+                        <p>PDF • Uploaded 2h ago</p>
+                    </div>
+                    <button class="dl-btn"><a href="#"><i class="fas fa-download"></i></a></button>
+                </div>
+
+                <div class="material-card">
+                    <div class="mat-icon purple"><i class="fas fa-code"></i></div>
+                    <div class="mat-details">
+                        <h4>SUBJECT - 2</h4>
+                        <p>PDF • Uploaded 2h ago</p>
+                    </div>
+                    <button class="dl-btn"><a href="#"><i class="fas fa-download"></i></a></button>
+                </div>
+
+                <div class="material-card">
+                    <div class="mat-icon purple"><i class="fas fa-code"></i></div>
+                    <div class="mat-details">
+                        <h4>SUBJECT - 3</h4>
+                        <p>PDF • Uploaded 2h ago</p>
+                    </div>
+                    <button class="dl-btn"><a href="#"><i class="fas fa-download"></i></a></button>
+                </div>
+
+                <div class="material-card">
+                    <div class="mat-icon purple"><i class="fas fa-code"></i></div>
+                    <div class="mat-details">
+                        <h4>SUBJECT - 4</h4>
+                        <p>PDF • Uploaded 2h ago</p>
+                    </div>
+                    <button class="dl-btn"><a href="#"><i class="fas fa-download"></i></a></button>
+                </div>
+
+                <div class="material-card">
+                    <div class="mat-icon purple"><i class="fas fa-code"></i></div>
+                    <div class="mat-details">
+                        <h4>SUBJECT - 5</h4>
+                        <p>PDF • Uploaded 2h ago</p>
+                    </div>
+                    <button class="dl-btn"><a href="#"><i class="fas fa-download"></i></a></button>
+                </div>
+
+                <div class="material-card">
+                    <div class="mat-icon purple"><i class="fas fa-code"></i></div>
+                    <div class="mat-details">
+                        <h4>SUBJECT - 6</h4>
+                        <p>PDF • Uploaded 2h ago</p>
+                    </div>
+                    <button class="dl-btn"><a href="#"><i class="fas fa-download"></i></a></button>
+                </div>
+            </section>
+        </main>
+
+<nav class="bottom-nav">
+    <a href="index.html" class="nav-link active"><i class="fas fa-home"></i><span>Home</span></a>
+    <a href="#" class="nav-link"><i class="fas fa-folder"></i><span>Notes</span></a>
+    
+    <div class="nav-link" id="academicsTrigger">
+        <i class="fas fa-th-list"></i> <span>More</span>
+        
+        <div class="utility-menu" id="utilityMenu">
+            <div class="menu-header">Academic Tools</div>
+            <a href="#"><i class="fas fa-book"></i> Ebooks</a>
+            <a href="#"><i class="fas fa-file-alt"></i> PYQs</a>
+            <a href="#"><i class="fas fa-scroll"></i> Syllabus</a>
+            <a href="#"><i class="fas fa-clock"></i> Timetable</a>
+            <a href="#"><i class="fas fa-calendar-check"></i> Attendance</a>
+            <a href ="#"><i class="fas fa-trophy"></i> Rankers</a>
+        </div>
+    </div>
+
+    <a href="#" class="nav-link"><i class="fas fa-code"></i><span>About Us</span></a>
+</nav>
+
+    </div>
+
+    <!-- Branch Availability Popup -->
+    <div id="branchNoticeOverlay" style="display:flex; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999; align-items:center; justify-content:center; font-family:'Poppins', sans-serif;">
+        <div style="background:#fff; border-radius:12px; max-width:360px; width:90%; padding:24px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.3);">
+            <p style="font-size:15px; color:#333; margin-bottom:20px; line-height:1.5;">
+                Currently, only the CSE e-Classroom is fully functional. Don't worry, we're working hard to bring your branch online soon!
+            </p>
+            <div style="display:flex; gap:10px; justify-content:center;">
+                <button id="branchNoticeOk" style="padding:10px 20px; border:none; border-radius:8px; background:#eee; color:#333; font-weight:500; cursor:pointer;">OK</button>
+                <button id="branchNoticeGoCse" style="padding:10px 20px; border:none; border-radius:8px; background:#6c5ce7; color:#fff; font-weight:500; cursor:pointer;">Go to CSE</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('branchNoticeOk').addEventListener('click', function() {
+            document.getElementById('branchNoticeOverlay').style.display = 'none';
+        });
+        document.getElementById('branchNoticeGoCse').addEventListener('click', function() {
+            window.location.href = 'https://outruniversity.github.io/academics/mtech/cse/index.html';
+        });
+    </script>
+</body>
+</html>

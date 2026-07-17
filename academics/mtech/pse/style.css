@@ -1,0 +1,581 @@
+/* --- UNIVERSAL CONFIG --- */
+/* --- UTILITY MENU ANIMATION --- */
+#academicsTrigger {
+    position: relative;
+    cursor: pointer;
+}
+
+.utility-menu {
+    position: absolute;
+    bottom: 80px; /* Sits above the nav bar */
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    width: 180px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border: 1px solid var(--border);
+    padding: 10px 0;
+    z-index: 2000;
+    
+    /* Animation Initial State */
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.utility-menu.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.menu-header {
+    padding: 5px 15px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #bbb;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.utility-menu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.utility-menu a i {
+    width: 18px;
+    color: var(--primary);
+    font-size: 14px;
+}
+
+.utility-menu a:hover {
+    background: var(--primary-soft);
+    color: var(--primary);
+}
+/* --- FIXED SIDEBAR BOX --- */
+
+/* --- Desktop Style --- */
+.welcome-text {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-right: auto; /* Pushes everything else to the right */
+}
+
+/* --- Mobile Fix --- */
+@media (max-width: 768px) {
+    .welcome-text {
+        display: none !important; /* Force hide on mobile */
+    }
+
+    .mobile-branding {
+        display: block;
+        margin-right: auto; /* Ensures branding stays left when welcome is hidden */
+    }
+
+    header {
+        justify-content: flex-end; 
+    }
+}
+
+/* --- Desktop Logic --- */
+@media (min-width: 769px) {
+    .welcome-text {
+        display: block;
+    }
+}
+.sidebar {
+    width: 260px;
+    background-color: var(--primary);
+    color: white;
+    padding: 30px 20px;
+    flex-shrink: 0;
+
+    /* These are the critical fixes */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;      /* Force sidebar to be full screen height */
+    position: sticky;   /* Keep it visible while scrolling main content */
+    top: 0;
+}
+
+/* Ensure the list doesn't grow, so the footer can stay at the bottom */
+.nav-links {
+    list-style: none;
+    flex-grow: 0;       /* Prevent links from pushing the footer manually */
+}
+
+/* --- THE FOOTER --- */
+.sidebar-footer {
+    display: none;      /* Hidden on mobile */
+    margin-top: auto;   /* This only works if parent has height: 100vh */
+    padding-bottom: 20px; /* Space from the very bottom edge */
+    
+    font-size: 14px; 
+    font-weight: 500;
+    text-align: center;
+    width: 100%;
+    opacity: 0.9;
+}
+
+/* Desktop Check */
+@media (min-width: 769px) {
+    .sidebar-footer {
+        display: block;
+    }
+}
+:root {
+    --primary: #8E6CEF;
+    --primary-soft: #F9F8FF;
+    --text-dark: #333333;
+    --text-light: #999999;
+    --bg-light: #F8F9FE;
+    --white: #FFFFFF;
+    --border: #F0F0F0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* --- DASHBOARD WRAPPER (Flex for Desktop Sidebar) --- */
+.dashboard-wrapper {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* --- SIDEBAR (Hidden on Mobile) --- */
+.sidebar {
+    width: 260px;
+    background-color: var(--primary);
+    color: white;
+    padding: 30px 20px;
+    flex-shrink: 0;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 50px;
+    font-weight: 600;
+}
+
+.logo-icon {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+.nav-links li.active, .nav-links li:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+.nav-links li i {
+    margin-right: 12px;
+    width: 20px;
+}
+
+/* --- MAIN CONTENT AREA --- */
+.main-content {
+    flex-grow: 1;
+    padding: 40px;
+    background: white;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    margin-bottom: 30px;
+    width: 100%;
+    position: relative;
+}
+
+.mobile-branding {
+    display: none; 
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    margin-right: auto; 
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.bell-icon {
+    font-size: 20px;
+    color: #555;
+    cursor: pointer;
+}
+
+/* --- PROFILE CONTAINER & DROPDOWN --- */
+.profile-container {
+    position: relative;
+    cursor: pointer;
+}
+
+.profile-badge {
+    width: 42px;
+    height: 42px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.branch-dropdown {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    width: 180px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    border: 1px solid var(--border);
+    padding: 10px 0;
+    z-index: 2000;
+    
+    /* Animation Initial State */
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-15px) scale(0.9);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.branch-dropdown.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.dropdown-header {
+    padding: 5px 15px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #bbb;
+    text-transform: uppercase;
+}
+
+.branch-dropdown a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.branch-dropdown a i {
+    width: 18px;
+    color: var(--primary);
+}
+
+.branch-dropdown a:hover {
+    background: var(--primary-soft);
+    color: var(--primary);
+}
+
+/* --- SEARCH BAR --- */
+.search-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.search-container i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 14px 45px;
+    border: none;
+    background: var(--bg-light);
+    border-radius: 15px;
+    outline: none;
+    font-size: 14px;
+}
+
+/* --- SCHEDULE & DATE SCROLLER --- */
+.schedule-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.date-scroller {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scrollbar-width: none; 
+    scroll-behavior: smooth; /* Required for auto-sliding */
+}
+
+.date-scroller::-webkit-scrollbar {
+    display: none;
+}
+
+.date-item {
+    text-align: center;
+    flex: 0 0 65px;
+    cursor: pointer;
+}
+
+.date-item .month {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-light);
+}
+
+.date-item .circle {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px auto;
+    font-weight: 600;
+    transition: 0.3s;
+    background: white;
+}
+
+.date-item.active .circle {
+    background: var(--primary);
+    color: white;
+    border: none;
+    box-shadow: 0 8px 15px rgba(142, 108, 239, 0.3);
+}
+
+/* --- LOADING LINE --- */
+.loader-track {
+    width: 100%;
+    height: 3px;
+    background: #f0f0f0;
+    margin-top: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.loading-bar {
+    width: 0%;
+    height: 100%;
+    background: var(--primary);
+    transition: width 0.4s ease-out, opacity 0.3s ease;
+    opacity: 0;
+}
+
+/* --- FRAGMENT CONTAINER & CARDS --- */
+.fragment-container {
+    margin-top: 25px;
+    min-height: 100px;
+}
+
+.stats-row {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    flex: 1;
+    min-width: 0; 
+    padding: 20px 15px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: white;
+}
+
+.stat-card.highlight {
+    border: 1.5px solid var(--primary);
+    background: var(--primary-soft);
+}
+
+.stat-icon-wrap {
+    font-size: clamp(20px, 4vw, 24px);
+    color: var(--primary);
+}
+
+.num {
+    font-size: clamp(18px, 4.5vw, 22px);
+    font-weight: 700;
+    display: block;
+}
+
+.lab {
+    font-size: clamp(11px, 2.5vw, 13px);
+    color: var(--text-light);
+}
+
+/* --- STUDY MATERIAL CARDS --- */
+.study-list h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.material-card {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+
+.mat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-right: 15px;
+}
+
+.mat-icon.purple { background: var(--primary); }
+
+.mat-details h4 { font-size: 14px; margin-bottom: 2px; }
+.mat-details p { font-size: 11px; color: var(--text-light); }
+
+.dl-btn {
+    margin-left: auto;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    background: #f5f5f5;
+    cursor: pointer;
+}
+
+/* --- BOTTOM NAV (Hidden on Desktop) --- */
+.bottom-nav {
+    display: none;
+}
+
+/* --- MOBILE RESPONSIVE QUERIES --- */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none; 
+    }
+
+    .main-content {
+        padding: 20px 15px 100px 15px; 
+    }
+
+    .mobile-branding {
+        display: block; 
+    }
+
+    header {
+        margin-bottom: 20px;
+    }
+
+    .date-scroller {
+        gap: 10px;
+    }
+
+    .stats-row {
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 15px 10px;
+    }
+
+    .bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        border-top: 1px solid var(--border);
+        justify-content: space-around;
+        padding: 12px 0 25px 0;
+        border-radius: 25px 25px 0 0;
+        box-shadow: 0 -5px 15px rgba(0,0,0,0.03);
+        z-index: 1000;
+    }
+
+    .nav-link {
+        text-decoration: none;
+        color: #bbb;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 10px;
+        font-weight: 500;
+    }
+
+    .nav-link i {
+        font-size: 22px;
+        margin-bottom: 4px;
+    }
+
+    .nav-link.active {
+        color: var(--primary);
+    }
+}
