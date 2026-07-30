@@ -2,31 +2,28 @@
 /**
  * generate-manifest.js
  * ---------------------------------------------------------------------
- * Scans the Blogs/ folder for post files (DD-MM-YYYY-01.html, DD-MM-YYYY-02.html, ...)
- * and rebuilds Blogs/manifest.json + Blogs/manifest.js from the
- * <meta post-date/post-title/post-excerpt> tags inside each file.
+ * Scans Blogs/ for post files (DD-MM-YYYY-01.html, DD-MM-YYYY-02.html, ...)
+ * and rebuilds Blogs/manifest.json + Blogs/manifest.js.
  *
- * This is what makes the "daily log" section on index.html automated:
- * script.js never lists posts by hand — it just reads the generated
- * manifest. index.html loads Blogs/manifest.js with a plain <script> tag
- * (not fetch), so it works even when index.html is opened directly by
- * double-clicking it (file://) — fetch() is blocked for local files by
- * the browser, but a <script src> is not. manifest.json is kept too, for
- * anything (like the GitHub Action) that wants to read it as data.
+ * NOTHING inside the post file needs to be hand-synced anymore:
+ *   - date    -> parsed from the filename itself
+ *   - title   -> pulled from <h1 class="post-title">...</h1>
+ *   - excerpt -> pulled from the first <p> inside .post-intro-text
  *
- * IMPORTANT: this script only scans Blogs/ at the moment you run it.
- * Adding a new post file does NOT update manifest.js by itself — you
- * must re-run this script (or use --watch below) or the new post will
- * not appear on the site, even though the file exists in Blogs/.
+ * So the entire workflow to publish a new entry is:
+ *   1. Copy an existing post file, rename it to today's date
+ *      (DD-MM-YYYY-01.html — DD-MM-YYYY-02.html for a 2nd post same day)
+ *   2. Edit the <h1 class="post-title"> and the intro paragraph
+ *      (plus the rest of the body, however long you want)
+ *   3. Save. If start-blog-watcher.bat is running, that's it —
+ *      manifest.js updates itself and index.html picks it up on refresh.
+ *      If it's not running, run `node generate-manifest.js` once by hand,
+ *      or start the watcher (see start-blog-watcher.bat).
  *
  * Usage:
  *   node generate-manifest.js            run once
- *   node generate-manifest.js --watch    run once, then keep watching
- *                                        Blogs/ and auto-regenerate on
- *                                        every add/edit/delete — leave
- *                                        this running while you work
- *                                        locally and you never have to
- *                                        re-run it by hand.
+ *   node generate-manifest.js --watch    run once, then auto-regenerate
+ *                                        on every add/edit/delete in Blogs/
  * ---------------------------------------------------------------------
  */
 const fs = require('fs');
@@ -36,24 +33,23 @@ const BLOGS_DIR = path.join(__dirname, 'Blogs');
 const MANIFEST_JSON_PATH = path.join(BLOGS_DIR, 'manifest.json');
 const MANIFEST_JS_PATH = path.join(BLOGS_DIR, 'manifest.js');
 
-// Matches DD-MM-YYYY-01.html, DD-MM-YYYY-12.html, etc. Adjust if you need a different scheme.
-const NAME_PATTERN = /^\d{2}-\d{2}-\d{4}-\d{2}\.html$/;
+// DD-MM-YYYY-01.html, DD-MM-YYYY-02.html, etc.
+const NAME_PATTERN = /^(\d{2})-(\d{2})-(\d{4})-(\d{2})\.html$/;
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-function extractMeta(html, name) {
-  const re = new RegExp(`<meta\\s+name=["']${name}["']\\s+content=["']([^"']*)["']`, 'i');
-  const match = html.match(re);
-  return match ? match[1].trim() : null;
+function extractTag(html, regex, label) {
+  const match = html.match(regex);
+  if (!match) return null;
+  // strip any nested HTML tags and collapse whitespace
+  return match[1].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 }
 
-function dateToSortKey(filename, dateLabel) {
-  // Prefer the human-readable date in the meta tag if present and parseable,
-  // otherwise fall back to the DD-MM-YYYY in the filename.
-  if (dateLabel) {
-    const parsed = Date.parse(dateLabel);
-    if (!Number.isNaN(parsed)) return parsed;
-  }
-  const [dd, mm, yyyy] = filename.split('-');
-  return new Date(Number(yyyy), Number(mm) - 1, Number(dd)).getTime();
+function deriveFromFilename(file) {
+  const m = file.match(NAME_PATTERN);
+  const [, dd, mm, yyyy] = m;
+  const dateObj = new Date(Number(yyyy), Number(mm) - 1, Number(dd));
+  const dateLabel = `${dd} ${MONTHS[dateObj.getMonth()]} ${yyyy}`;
+  return { dateLabel, sortKey: dateObj.getTime() + m[4] * 1 }; // +sequence to order same-day posts
 }
 
 function generate() {
@@ -70,10 +66,17 @@ function generate() {
 
   const entries = files.map(file => {
     const html = fs.readFileSync(path.join(BLOGS_DIR, file), 'utf8');
-    const date = extractMeta(html, 'post-date') || file;
-    const title = extractMeta(html, 'post-title') || file.replace('.html', '');
-    const excerpt = extractMeta(html, 'post-excerpt') || '';
-    return { file, date, title, excerpt, _sort: dateToSortKey(file, extractMeta(html, 'post-date')) };
+    const { dateLabel, sortKey } = deriveFromFilename(file);
+
+    const title = extractTag(html, /<h1[^>]*class=["']post-title["'][^>]*>([\s\S]*?)<\/h1>/i)
+      || file.replace('.html', '');
+
+    const excerpt = extractTag(
+      html,
+      /<div[^>]*class=["'][^"']*post-intro-text[^"']*["'][^>]*>\s*<p>([\s\S]*?)<\/p>/i
+    ) || '';
+
+    return { file, date: dateLabel, title, excerpt, _sort: sortKey };
   });
 
   entries.sort((a, b) => a._sort - b._sort);
@@ -94,12 +97,9 @@ function generate() {
 function watch() {
   if (!generate()) process.exit(1);
   console.log('Watching Blogs/ for changes... (Ctrl+C to stop)');
-
-  // Debounced: editors/OSes often fire several change events for one save,
-  // so wait a beat for things to settle before regenerating.
   let timer = null;
   fs.watch(BLOGS_DIR, { persistent: true }, (eventType, filename) => {
-    if (!filename || !NAME_PATTERN.test(filename)) return; // ignore manifest.json/js and anything else
+    if (!filename || !NAME_PATTERN.test(filename)) return;
     clearTimeout(timer);
     timer = setTimeout(generate, 200);
   });
