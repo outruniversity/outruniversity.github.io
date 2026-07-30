@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INGENIOUX — Alekh Chandra Sahoo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="noise"></div>
+
+<div class="spine">
+  <div class="spine-track">
+    <div class="spine-fill" id="spineFill"></div>
+    <div class="spine-dot" id="spineDot"></div>
+  </div>
+</div>
+
+<nav>
+  <div class="wordmark">INGENIOU<span>X</span></div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#work">Work</a>
+    <a href="#research">Research</a>
+    <a href="#blog">Blog</a>
+  </div>
+  <a href="#contact" class="nav-cta">Get in touch</a>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <canvas id="ember-canvas"></canvas>
+
+  <div class="solar-system" aria-hidden="true">
+    <div class="orbit orbit-1"><div class="planet planet-1"></div></div>
+    <div class="orbit orbit-2"><div class="planet planet-2"></div></div>
+    <div class="orbit orbit-3"><div class="planet planet-3"></div></div>
+    <div class="orbit orbit-4"><div class="planet planet-4"></div></div>
+    <div class="sun"></div>
+    <div class="solar-caption">notebook sketch — not to scale</div>
+  </div>
+
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Independent Research Lab · Est. 2026</div>
+    <h1>Building<br><em>INGENIOUX</em></h1>
+    <p class="hero-tagline">Where curiosity becomes code</p>
+    <p class="hero-sub">This is my personal research lab — not a company, just a working record of what I'm
+      studying and building: AI models, cloud systems and the data-structure problems underneath them.
+      Right now it's me, a lot of open questions, and the work that answers them.</p>
+    <div class="hero-meta">
+      <div><span>Alekh Chandra Sahoo</span>Founder &amp; Research Scholar</div>
+      <div><span>AI/ML &amp; Cloud Computing</span>Primary focus</div>
+      <div><span>Puri, Odisha, India</span>Based in</div>
+    </div>
+  </div>
+  <div class="scroll-cue"><div class="bar"></div>Scroll</div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid reveal">
+      <div class="portrait"><span class="initials">AS</span></div>
+      <div class="about-body">
+        <div class="eyebrow">Who's behind this</div>
+        <p>I'm <strong>Alekh Chandra Sahoo</strong>, from Puri, Odisha, India — currently pursuing my
+          <strong>MTech in Computer Science and Engineering</strong> at Odisha University of Technology
+          and Research. I completed my <strong>BTech in Computer Science and Engineering</strong> at the
+          Government College of Engineering, Kalahandi (GCEK), Bhawanipatna. INGENIOUX doesn't exist as a
+          company — it's the name I work under, and this site is the lab notebook for what I'm building
+          toward under it.</p>
+        <p>I like building software that actually solves a problem instead of just demonstrating one.
+          Most of my time goes into <strong>understanding and building AI/ML models</strong>, and into
+          research around <strong>cloud computing and data structures &amp; algorithms</strong> — how
+          systems store, move and reason over data at scale, and how the underlying algorithms make that
+          efficient or not. The projects below are the practical side of that: lost-and-found retrieval
+          systems, classroom platforms, assistants — each one a place to test an idea against something
+          real rather than leave it on paper.</p>
+        <div class="stat-row">
+          <div class="stat"><b>7+</b><span>Projects built</span></div>
+          <div class="stat"><b>AI/ML</b><span>Core research area</span></div>
+          <div class="stat"><b>2027</b><span>MTech completion</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section class="skills" id="skills">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 class="section-title">Skills</h2>
+      <div class="section-note">What I actually work with day to day — languages, systems and the research craft around them.</div>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-item reveal" data-percent="80">
+        <div class="skill-top"><span>Machine Learning / AI</span><span class="skill-pct">0%</span></div>
+        <div class="skill-track"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-item reveal" data-percent="75">
+        <div class="skill-top"><span>Cloud Computing</span><span class="skill-pct">0%</span></div>
+        <div class="skill-track"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-item reveal" data-percent="80">
+        <div class="skill-top"><span>Data Structures &amp; Algorithms</span><span class="skill-pct">0%</span></div>
+        <div class="skill-track"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-item reveal" data-percent="95">
+        <div class="skill-top"><span>Java</span><span class="skill-pct">0%</span></div>
+        <div class="skill-track"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-item reveal" data-percent="85">
+        <div class="skill-top"><span>Python</span><span class="skill-pct">0%</span></div>
+        <div class="skill-track"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-item reveal" data-percent="80">
+        <div class="skill-top"><span>C++</span><span class="skill-pct">0%</span></div>
+        <div class="skill-track"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-item reveal" data-percent="80">
+        <div class="skill-top"><span>Database Management (MySQL)</span><span class="skill-pct">0%</span></div>
+        <div class="skill-track"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-item reveal" data-percent="85">
+        <div class="skill-top"><span>Research Writing</span><span class="skill-pct">0%</span></div>
+        <div class="skill-track"><div class="skill-fill"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WORK ================= -->
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 class="section-title">Past work</h2>
+      <div class="section-note">Projects, prototypes and experiments — the ones that shaped how I think about the problem now.</div>
+    </div>
+    <div class="work-grid">
+
+      <div class="work-card reveal">
+        <div class="glow"></div>
+        <div class="tag">Project 01</div>
+        <h3>NextConnect</h3>
+        <p>An application for lost-luggage retrieval — built to help travelers report and recover
+          misplaced belongings faster.</p>
+        <div class="meta"><span><a href="https://github.com/ingenioux/NextConnect" target="_blank" rel="noopener" style="color:inherit;">View on GitHub ↗</a></span><span>Applied</span></div>
+      </div>
+
+      <div class="work-card reveal">
+        <div class="glow"></div>
+        <div class="tag">Project 02</div>
+        <h3>MTech Classroom Website</h3>
+        <p>A classroom platform for Outrun University, built to organize coursework, resources and
+          communication for MTech students.</p>
+        <div class="meta"><span><a href="https://outruniversity.github.io/" target="_blank" rel="noopener" style="color:inherit;">Visit site ↗</a></span><span>Web Platform</span></div>
+      </div>
+
+      <div class="work-card reveal">
+        <div class="glow"></div>
+        <div class="tag">Project 03</div>
+        <h3>Automated Printing via Application</h3>
+        <p>A system to send print jobs to a shop or kiosk directly from an app, cutting out the
+          manual back-and-forth of getting documents printed.</p>
+        <div class="meta"><span>In progress</span><span>Applied</span></div>
+      </div>
+
+      <div class="work-card reveal">
+        <div class="glow"></div>
+        <div class="tag">Project 04</div>
+        <h3>Jarvis AI</h3>
+        <p>A personal AI assistant concept — exploring voice interaction, task automation and
+          on-device intelligence.</p>
+        <div class="meta"><span>In progress</span><span>AI / ML</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESEARCH ================= -->
+<section class="research" id="research">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 class="section-title">Research</h2>
+      <div class="section-note">Papers, preprints and lab notes. Each entry links out to the PDF.</div>
+    </div>
+
+    <div class="research-list">
+      <div class="paper reveal">
+        <div class="date">[Mon Year]</div>
+        <div>
+          <h3>[Research paper / note title]</h3>
+          <p>[Short abstract — one or two sentences describing the question you asked and what you found.]</p>
+          <div class="tags"><span>[Field]</span><span>Preprint</span></div>
+        </div>
+        <a class="dl" href="research/paper-01.pdf">↓ PDF</a>
+      </div>
+
+      <div class="paper reveal">
+        <div class="date">[Mon Year]</div>
+        <div>
+          <h3>[Research paper / note title]</h3>
+          <p>[Short abstract — one or two sentences describing the question you asked and what you found.]</p>
+          <div class="tags"><span>[Field]</span><span>Working paper</span></div>
+        </div>
+        <a class="dl" href="research/paper-02.pdf">↓ PDF</a>
+      </div>
+
+      <div class="paper reveal">
+        <div class="date">[Mon Year]</div>
+        <div>
+          <h3>[Research paper / note title]</h3>
+          <p>[Short abstract — one or two sentences describing the question you asked and what you found.]</p>
+          <div class="tags"><span>[Field]</span><span>Published</span></div>
+        </div>
+        <a class="dl" href="research/paper-03.pdf">↓ PDF</a>
+      </div>
+    </div>
+
+    <div class="research-upload-note reveal">
+      → To add a paper: put the PDF in a folder named <strong style="color:var(--text)">research/</strong> next to this
+      HTML file (e.g. research/paper-01.pdf), then edit the &lt;a class="dl"&gt; href in the code to match the filename.
+      Duplicate a .paper block for each new entry.
+    </div>
+  </div>
+</section>
+
+<!-- ================= BLOG ================= -->
+<section class="blog" id="blog">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 class="section-title">Daily log</h2>
+      <div class="section-note">Short, dated notes from the lab. Scroll sideways, click a node to read it.</div>
+    </div>
+
+    <div class="blog-timeline-wrap reveal">
+      <div class="blog-timeline" id="blogTimeline">
+        <div class="blog-line"></div>
+        <!-- nodes injected by script.js, read from window.BLOG_MANIFEST (Blogs/manifest.js) -->
+      </div>
+      <div class="blog-scroll-hint">← scroll →</div>
+    </div>
+
+    <div class="research-upload-note reveal">
+      → This section is automated: drop a new post as <strong style="color:var(--text)">Blogs/DD-MM-YYYY-01.html</strong>
+      (copy an existing one as a template) with its <strong style="color:var(--text)">post-date / post-title /
+      post-excerpt</strong> meta tags filled in, then run <strong style="color:var(--text)">node generate-manifest.js</strong>
+      (or just push, if the included GitHub Action is active) — it appears here with no other edits.
+    </div>
+  </div>
+</section>
+
+<!-- ================= EDUCATION TIMELINE ================= -->
+<section class="milestones" id="milestones">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 class="section-title">Education timeline</h2>
+      <div class="section-note">How this got started, in order.</div>
+    </div>
+    <div class="m-list">
+      <div class="m-item reveal">
+        <span class="y">2015 – 2018</span>
+        <h4>Matriculation</h4>
+        <p>Aishanyeswar Bidyapith, Astarang.</p>
+      </div>
+      <div class="m-item reveal">
+        <span class="y">2018 – 2020</span>
+        <h4>Post-Matric in Science with IT</h4>
+        <p>Rajdhani Higher Secondary School, Bhubaneswar.</p>
+      </div>
+      <div class="m-item reveal">
+        <span class="y">2020 – 2024</span>
+        <h4>BTech in Computer Science and Engineering</h4>
+        <p>Government College of Engineering, Kalahandi (GCEK), Bhawanipatna.</p>
+      </div>
+      <div class="m-item reveal">
+        <span class="y">2024 – 2025</span>
+        <h4>GATE Exam Preparation</h4>
+        <p>Byju's &amp; PW.</p>
+      </div>
+      <div class="m-item reveal">
+        <span class="y">2025 – 2027</span>
+        <h4>MTech in Computer Science and Engineering</h4>
+        <p>Odisha University of Technology and Research.</p>
+      </div>
+      <div class="m-item reveal">
+        <span class="y">2026</span>
+        <h4>Started building INGENIOUX</h4>
+        <p>Picked the name, started documenting the work, and began this site.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FRIENDS' RESEARCH ================= -->
+<section class="friends" id="friends">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 class="section-title">From the circle</h2>
+      <div class="section-note">Research from people I work alongside. Reach them directly if something here overlaps with what you're doing.</div>
+    </div>
+
+    <div class="friends-scroll-wrap reveal">
+      <div class="friends-grid">
+        <div class="friend-card">
+          <h3>[Friend's Name]</h3>
+          <p>[One or two sentences on their research focus — e.g. "Working on low-power inference for edge devices."]</p>
+          <a class="friend-mail" href="mailto:friend1@example.com">friend1@example.com ↗</a>
+        </div>
+
+        <div class="friend-card">
+          <h3>[Friend's Name]</h3>
+          <p>[One or two sentences on their research focus — e.g. "Distributed systems and fault-tolerant storage."]</p>
+          <a class="friend-mail" href="mailto:friend2@example.com">friend2@example.com ↗</a>
+        </div>
+
+        <div class="friend-card">
+          <h3>[Friend's Name]</h3>
+          <p>[One or two sentences on their research focus — e.g. "Applied NLP for regional languages."]</p>
+          <a class="friend-mail" href="mailto:friend3@example.com">friend3@example.com ↗</a>
+        </div>
+      </div>
+      <div class="friends-scroll-hint">← scroll →</div>
+    </div>
+
+    <div class="research-upload-note reveal">
+      → Swap the bracketed names, blurbs and mailto addresses above for your friends' actual details.
+      Duplicate a .friend-card block for each additional person.
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap reveal">
+    <div class="eyebrow" style="justify-content:center;">Open to conversations</div>
+    <h2>Not a company.<br>Still worth <em>talking to</em>.</h2>
+    <p>If you're working on something adjacent, want to collaborate on research, or just want to see where this goes — reach out.</p>
+    <a class="contact-cta" href="mailto:info@ingenioux.in">info@ingenioux.in →</a>
+    <div style="margin-top:22px;font-family:var(--font-mono);font-size:12.5px;color:var(--text-faint);">
+      Puri, Odisha, India
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 INGENIOUX — Alekh Chandra Sahoo. Built in public.</div>
+  <div class="socials">
+    <a href="https://www.linkedin.com/in/ingenioux/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/ingenioux" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://twitter.com/ingenioux_" target="_blank" rel="noopener">Twitter / X</a>
+    <a href="https://www.instagram.com/ingenioux.io/" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</footer>
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<script src="Blogs/manifest.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
