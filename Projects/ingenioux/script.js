@@ -87,48 +87,16 @@ function draw(){
 window.addEventListener('resize', ()=>{ resize(); initParticles(); });
 resize(); initParticles(); draw();
 
-// ---------- daily log / blog: automated from Blogs/manifest.js ----------
-// Nothing here is hand-edited. Add a post by dropping a new file in Blogs/
-// (see Blogs/31-07-2026-01.html as a template) and running generate-manifest.js
-// — or just push, if the included GitHub Action is set up to run it for you.
-// window.BLOG_MANIFEST comes from Blogs/manifest.js, loaded via a plain
-// <script> tag in index.html — this works even when index.html is opened
-// directly by double-clicking it, unlike fetch(), which browsers block for
-// local files.
+// ---------- daily log / blog ----------
+// The list of posts now lives directly in index.html as <a class="blog-node">
+// blocks inside #blogTimeline — edit the date, title and href there to add,
+// rename or remove entries. This just shows a fallback message if that
+// section is ever left empty.
 const timelineEl = document.getElementById('blogTimeline');
-
-function loadBlogTimeline(){
-  const entries = window.BLOG_MANIFEST;
-
-  if(!Array.isArray(entries)){
-    timelineEl.insertAdjacentHTML('beforeend',
-      `<div class="blog-empty">Couldn't find Blogs/manifest.js — make sure index.html includes
-        it with a &lt;script src="Blogs/manifest.js"&gt; tag before script.js, and that
-        generate-manifest.js has been run at least once.</div>`);
-    return;
-  }
-
-  if(!entries.length){
-    timelineEl.insertAdjacentHTML('beforeend',
-      `<div class="blog-empty">No entries yet — add one to Blogs/ and it'll show up here.</div>`);
-    return;
-  }
-
-  entries.forEach(entry=>{
-    const node = document.createElement('a');
-    node.className = 'blog-node';
-    node.href = `Blogs/${entry.file}`;
-    node.innerHTML = `
-      <div class="dot"></div>
-      <div class="b-date">${entry.date}</div>
-      <h4>${entry.title}</h4>
-      <p>${entry.excerpt}</p>
-      <span class="read">Read →</span>
-    `;
-    timelineEl.appendChild(node);
-  });
+if(timelineEl && !timelineEl.querySelector('.blog-node')){
+  timelineEl.insertAdjacentHTML('beforeend',
+    `<div class="blog-empty">No entries yet — add a &lt;a class="blog-node"&gt; block in index.html.</div>`);
 }
-loadBlogTimeline();
 
 // ---------- custom animated cursor ----------
 (function(){

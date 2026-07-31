@@ -4,13 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- ===== automation metadata — read by generate-manifest.js, do not remove ===== -->
-<meta name="post-date" content="31 Jul 2026">
-<meta name="post-title" content="Starting the lab notebook">
-<meta name="post-excerpt" content="Why this log exists, and how the automated version of it works.">
-<!-- ============================================================================ -->
-
-<title>Starting the lab notebook — INGENIOUX</title>
+<title>Is MTech CSE still worth it? — INGENIOUX</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -50,8 +44,10 @@ a{color:inherit;text-decoration:none;}
 }
 .back-nav:hover{border-color:var(--ember);color:var(--ember);}
 
-/* ===== top meta strip: topic / date / author ===== */
-.post-top{padding:150px 64px 0;}
+/* ===== top meta strip: topic / date / author =====
+   padding-top brought down from 150px -> 90px so the eyebrow sits closer
+   to the back button on desktop. Mobile rule below is UNCHANGED. */
+.post-top{padding:90px 64px 0;}
 @media (max-width:700px){.post-top{padding:130px 22px 0;}}
 .post-top-inner{max-width:1400px;margin:0 auto;}
 .eyebrow{
@@ -72,7 +68,7 @@ a{color:inherit;text-decoration:none;}
 .post-meta span{color:var(--text);}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 
-/* ===== intro: image left, intro text right ===== */
+/* ===== intro: image left, "Abstract" label + paragraph right ===== */
 .post-intro{padding:56px 64px 76px;}
 @media (max-width:700px){.post-intro{padding:40px 22px 50px;}}
 .post-intro-grid{
@@ -90,11 +86,19 @@ a{color:inherit;text-decoration:none;}
   font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);
   position:absolute;bottom:14px;left:14px;
 }
+.abstract-label{
+  font-family:var(--font-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:14px;
+}
 .post-intro-text p{font-size:17px;line-height:1.85;color:var(--text-dim);}
 .post-intro-text strong{color:var(--text);font-weight:500;}
 
-/* ===== full write-up section below ===== */
-.post-body{max-width:820px;margin:0 auto;padding:0 64px 120px;}
+/* ===== full write-up section below =====
+   max-width brought up from 820px -> 1400px so this section lines up with
+   .post-intro-grid above instead of looking narrower/off-center on desktop.
+   Horizontal padding (64px) already matched .post-intro, so this was the
+   only mismatch. Mobile rule below is UNCHANGED. */
+.post-body{max-width:1400px;margin:0 auto;padding:0 64px 120px;}
 @media (max-width:700px){.post-body{padding:0 22px 90px;}}
 .post-body p{font-size:16.5px;line-height:1.8;color:var(--text-dim);margin-bottom:22px;}
 .post-body strong{color:var(--text);font-weight:500;}
@@ -103,38 +107,6 @@ a{color:inherit;text-decoration:none;}
 
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
 .reveal.in{opacity:1;transform:translateY(0);}
-
-/* code block */
-.code-block{
-  background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:22px 24px;margin:22px 0 30px;
-  font-family:var(--font-mono);font-size:13px;line-height:1.75;color:var(--text-dim);overflow-x:auto;position:relative;
-}
-.code-block .tag-line{color:var(--gold);}
-.code-block .str{color:var(--ember);}
-.code-block::before{
-  content:'meta';position:absolute;top:10px;right:14px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);
-}
-
-/* steps */
-.steps{list-style:none;margin:10px 0 34px;counter-reset:step;}
-.steps li{
-  position:relative;padding:18px 0 18px 44px;border-top:1px solid var(--line);
-  font-size:15.5px;color:var(--text-dim);
-}
-.steps li:last-child{border-bottom:1px solid var(--line);}
-.steps li::before{
-  counter-increment:step;content:counter(step);position:absolute;left:0;top:16px;
-  width:26px;height:26px;border-radius:50%;border:1px solid var(--ember);color:var(--ember);
-  font-family:var(--font-mono);font-size:12px;display:flex;align-items:center;justify-content:center;
-}
-.steps li strong{display:block;color:var(--text);font-weight:500;margin-bottom:4px;}
-
-/* pull quote / callout */
-.callout{
-  border-left:2px solid var(--gold);background:var(--gold-soft);padding:20px 24px;border-radius:0 4px 4px 0;
-  margin:30px 0;font-size:15.5px;line-height:1.7;color:var(--text-dim);
-}
-.callout strong{color:var(--text);}
 
 /* footer */
 .post-footer{
@@ -162,67 +134,39 @@ a{color:inherit;text-decoration:none;}
 <!-- ===== TOP: topic, date, author ===== -->
 <header class="post-top">
   <div class="post-top-inner">
-    <div class="eyebrow">Daily log · Entry 01</div>
-    <h1 class="post-title">Starting the lab notebook</h1>
+    <div class="eyebrow">Daily Blog · Entry 01</div>
+    <h1 class="post-title">Is MTech CSE still worth it?</h1>
     <div class="post-meta">
-      <span>31 Jul 2026</span> · Alekh Chandra Sahoo
+      <span>01 Aug 2026</span> · Alekha Chandra Sahoo
     </div>
   </div>
 </header>
 
-<!-- ===== INTRO: image left, intro text right ===== -->
+<!-- ===== INTRO: image left, "Abstract" + paragraph right ===== -->
 <section class="post-intro">
   <div class="post-intro-grid">
     <div class="post-image reveal">
-      <!-- Swap the placeholder below for a real image:
-           <img src="Images/31-07-2026-01.jpg" alt="..."> -->
-      <span class="placeholder-label">IMAGE</span>
+      <img src="../Storage/Images/about.png" alt="...">
     </div>
     <div class="post-intro-text reveal">
-      <p>Why this log exists, and — since it's the first entry — a quick note on
-        how it publishes itself. The <strong>Research</strong> section of this site is for finished
-        thinking; this log is the opposite: small experiments, half-working ideas, dead ends, the
-        kind of note that's useful for a day and forgotten by the next.</p>
+      <div class="abstract-label">Abstract</div>
+      <p>The top-of-page gap under the back button was too tall, and the full-width write-up
+        section below the intro didn't line up with it on desktop — it was capped at a narrower
+        width than the image-and-text block above, so the two sections had different left/right
+        margins even though nothing about the content itself changed. Mobile view was never
+        affected since both sections already collapse to the same full-width, small-padding
+        layout there.</p>
     </div>
   </div>
 </section>
 
-<!-- ===== BODY: full write-up ===== -->
+<!-- ===== BODY: full write-up, now width-matched to the intro section ===== -->
 <main class="post-body">
-  <h2 class="reveal">Why keep a log at all</h2>
-  <p class="reveal">Each entry is dated, short, and specific. No pressure to make it a proper essay —
-    if something's just a couple of lines of "tried X, it didn't work, here's why," that's a complete
-    entry. It exists so that work doesn't only show up here once it's polished.</p>
-
-  <h2 class="reveal">How this page gets on the site</h2>
-  <p class="reveal">This is a plain HTML file living in the <strong>Blogs/</strong> folder, named with the
-    convention <strong>DD-MM-YYYY-01.html</strong> (a second post on the same day would be
-    <strong>DD-MM-YYYY-02.html</strong>, and so on). Any image for the post goes in the
-    <strong>Images/</strong> folder. The three meta tags at the top of the file are what make it
-    show up automatically on the main page:</p>
-
-  <div class="code-block reveal">&lt;<span class="tag-line">meta name="post-date"</span> content=<span class="str">"31 Jul 2026"</span>&gt;
-&lt;<span class="tag-line">meta name="post-title"</span> content=<span class="str">"Starting the lab notebook"</span>&gt;
-&lt;<span class="tag-line">meta name="post-excerpt"</span> content=<span class="str">"Why this log exists..."</span>&gt;</div>
-
-  <div class="callout reveal">
-    <strong>The rule:</strong> index.html and script.js never list posts by name. index.html loads
-    <strong>Blogs/manifest.js</strong> with a plain script tag, which is generated from these meta
-    tags — so the only file you ever author by hand is the post itself.
-  </div>
-
-  <h2 class="reveal">Publishing a new entry</h2>
-  <ol class="steps reveal">
-    <li><strong>Copy this file</strong>as a template and rename it to today's date, e.g. 03-08-2026-01.html.</li>
-    <li><strong>Edit the meta tags and the top/intro/body sections</strong>at the top, and write the entry in the body below them.</li>
-    <li><strong>Run the generator</strong>— <code>node generate-manifest.js</code> — which rescans Blogs/
-      and rewrites manifest.json for you.</li>
-    <li><strong>Push it</strong>if this repo is on GitHub Pages, the included Action runs step 3
-      automatically on every push, so this step alone is enough.</li>
-  </ol>
-
-  <p class="reveal">That's it for the first entry. Future ones will be shorter than this — this one's
-    doing double duty as documentation.</p>
+  <p class="reveal">Two changes fixed it: the eyebrow now sits roughly 60px closer to the back
+    button instead of 150px, and this section's max-width now matches the intro grid's 1400px
+    instead of the old 820px — so its left and right edges line up with the image and abstract
+    text above it on any desktop width, with the same 64px side padding both sections always
+    shared.</p>
 </main>
 
 <footer class="post-footer">

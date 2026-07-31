@@ -164,16 +164,18 @@ h2.section-title{font-family:var(--font-display);font-weight:600;font-size:clamp
 .about{padding-top:150px;padding-bottom:130px;border-top:1px solid var(--line);}
 .about-grid{display:grid;grid-template-columns:280px 1fr;gap:64px;}
 @media (max-width:800px){.about-grid{grid-template-columns:1fr;gap:36px;}}
-.portrait{
-  aspect-ratio:4/5;border:1px solid var(--line);border-radius:2px;
-  background:linear-gradient(160deg,var(--surface),var(--surface-2));
-  display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+
+/* Replaced old portrait placeholder with precise image controls */
+.portrait, .portrait-image {
+  width: 100%;
+  max-width: 280px; /* Locks the resolution width to match the grid */
+  aspect-ratio: 4/5; /* Ensures the image stays strictly 4:5 */
+  object-fit: cover; /* Centers the image to prevent distortion */
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  display: block;
 }
-.portrait .initials{font-family:var(--font-display);font-size:56px;color:var(--text-faint);}
-.portrait::after{
-  content:'PHOTO';position:absolute;bottom:14px;left:14px;font-family:var(--font-mono);
-  font-size:10px;letter-spacing:.12em;color:var(--text-faint);
-}
+
 .about-body p{font-size:17px;line-height:1.75;color:var(--text-dim);margin-bottom:20px;max-width:640px;}
 .about-body strong{color:var(--text);font-weight:500;}
 .stat-row{display:flex;gap:56px;margin-top:44px;flex-wrap:wrap;}
