@@ -76,9 +76,10 @@ section{position:relative;padding:0 48px;}
 /* ---------- hero ---------- */
 .hero{
   min-height:100vh;display:flex;flex-direction:column;justify-content:flex-start;
-  padding:100px 0 90px;position:relative;overflow:hidden;
+  padding:100px 48px 90px;position:relative;overflow:hidden;
 }
-@media (max-width:700px){.hero{padding:100px 0 70px;}}
+@media (max-width:900px){.hero{padding:100px 22px 90px;}}
+@media (max-width:700px){.hero{padding:100px 22px 70px;}}
 #ember-canvas{position:absolute;inset:0;z-index:0;}
 .hero-inner{position:relative;z-index:1;max-width:1180px;margin:0 auto;width:100%;}
 .hero h1{
@@ -163,7 +164,10 @@ h2.section-title{font-family:var(--font-display);font-weight:600;font-size:clamp
 /* ---------- about ---------- */
 .about{padding-top:150px;padding-bottom:130px;border-top:1px solid var(--line);}
 .about-grid{display:grid;grid-template-columns:280px 1fr;gap:64px;}
-@media (max-width:800px){.about-grid{grid-template-columns:1fr;gap:36px;}}
+@media (max-width:800px){
+  .about-grid{grid-template-columns:1fr;gap:36px;}
+  .about-grid .portrait, .about-grid .portrait-image{max-width:220px;margin:0 auto;}
+}
 
 /* Replaced old portrait placeholder with precise image controls */
 .portrait, .portrait-image {
